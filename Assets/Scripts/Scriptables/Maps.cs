@@ -7,4 +7,6 @@ public class Maps : ScriptableObject
 {
     public Sprite sprite;
     public int positionBuildScene;
+    public int goldLeafs;
+    public int health;
 }

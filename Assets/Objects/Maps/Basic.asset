@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: -652730282552034232, guid: 374d0092abe12c305884e13c1e69b686, type: 3}
   positionBuildScene: 1
+  goldLeafs: 7
+  health: 3

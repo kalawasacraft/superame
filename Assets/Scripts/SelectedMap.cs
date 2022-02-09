@@ -14,6 +14,7 @@ public class SelectedMap : MonoBehaviour
     void Start()
     {
         _gameManager = GameManager.Instance;
+        _mapIndex = PlayerPrefs.GetInt("mapIndex");
         
         if (_mapIndex >= _gameManager.maps.Count) {
             _mapIndex = 0;
@@ -24,6 +25,7 @@ public class SelectedMap : MonoBehaviour
 
     private void ChangeMap()
     {
+        PlayerPrefs.SetInt("mapIndex", _mapIndex);
         _mapImage.sprite = _gameManager.maps[_mapIndex].sprite;
     }
 
