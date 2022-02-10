@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public TMPro.TMP_Text topLeafValue;
     public TMPro.TMP_Text timeValue;
     public TMPro.TMP_Text countdownValue;
+    public GameObject buttonPause;
 
     //private Maps _currentMap;
 
@@ -27,7 +28,12 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         
-    }    
+    }
+
+    public static void EnabledPause(bool value)
+    {
+        Instance.buttonPause.SetActive(value);
+    }
 
     public static void UpdateHealthUI(int health)
     {
@@ -62,6 +68,11 @@ public class UIManager : MonoBehaviour
     public static void SetActiveCountdownUI(bool value)
     {
         Instance.countdownValue.gameObject.SetActive(value);
+    }
+
+    public static void ShowMenuCompleted()
+    {
+        Instance.GetComponent<MenuCompleted>().Completed();
     }
 
     private string getHealthString(int health)

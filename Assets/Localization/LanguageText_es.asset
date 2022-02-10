@@ -34,5 +34,61 @@ MonoBehaviour:
     m_Localized: "\xA1VAMOS!"
     m_Metadata:
       m_Items: []
+  - m_Id: 12964997706895360
+    m_Localized: CONTINUAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12965091709636608
+    m_Localized: REINICIAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12965251424538624
+    m_Localized: GUARDAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12966622584459264
+    m_Localized: COMPLETADO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12967438619856896
+    m_Localized: ELIMINADO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12967588700442624
+    m_Localized: "\xA1Que habilidad!, no te merecemos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12967684561260544
+    m_Localized: "\xA1Increible!, tu nivel supera mis datos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12967708074528768
+    m_Localized: "Comprobado, \xA1tu eres el pap\xE1!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12967722930753536
+    m_Localized: "\xA1Insolente!, no me mereces."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12967764194316288
+    m_Localized: Lo sabia, que falta de opulencia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12967785362968576
+    m_Localized: "\xA1Era obvio!, perder es tan comun para ti."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13047365755031552
+    m_Localized: "\xA1Vaya!, te tomas tu tiempo, no lo esperaba de ti."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13047414375403520
+    m_Localized: "\xBFEstas nervioso? te sobreestime."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13047427314831360
+    m_Localized: Ja ja!, pausar es para debiles.
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

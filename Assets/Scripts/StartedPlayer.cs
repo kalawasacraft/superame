@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization;
-using UnityEngine.Localization.Settings;
-using UnityEngine.Localization.Tables;
 using Cinemachine;
 
 public class StartedPlayer : MonoBehaviour
@@ -25,13 +23,14 @@ public class StartedPlayer : MonoBehaviour
     {
         int playerIndex = PlayerPrefs.GetInt("playerIndex");
         _initPlayer = Instantiate(GameManager.Instance.players[playerIndex].player, positionPlayer.transform.position, Quaternion.identity);
-        _initPlayer.GetComponent<PlayerController>().setEnablePlayer(false);
 
         if (_vCam != null) {
             _vCam.Follow = _initPlayer.transform;
         }
 
+        GameManager.RestartGame();
         GameManager.InitGame();
+
         StartCoroutine(CountdownToStart());
     }
 
@@ -43,12 +42,16 @@ public class StartedPlayer : MonoBehaviour
 
     private IEnumerator CountdownToStart()
     {
-        while (secondsCountdown > 0) {
+        int seconds = secondsCountdown;
+        
+        UIManager.SetActiveCountdownUI(true);
 
-            UIManager.UpdateCountdownUI(secondsCountdown.ToString());
+        while (seconds > 0) {
+
+            UIManager.UpdateCountdownUI(seconds.ToString());
             yield return new WaitForSeconds(1f);
 
-            secondsCountdown--;
+            seconds--;
         }
 
         UIManager.UpdateCountdownUI(_stringTable.GetTable().GetEntry("langGo").GetLocalizedString());
@@ -57,8 +60,7 @@ public class StartedPlayer : MonoBehaviour
 
         GameManager.StartGame();
 
-        _initPlayer.GetComponent<PlayerController>().setEnablePlayer(true);
-
         UIManager.SetActiveCountdownUI(false);
+        UIManager.EnabledPause(true);
     }
 }

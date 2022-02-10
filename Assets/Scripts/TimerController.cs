@@ -24,8 +24,15 @@ public class TimerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*UIManager.UpdateTimeUI("00:00.00");
+        _timerGoing = false;*/
+        RestartTimer();
+    }
+
+    public static void RestartTimer()
+    {
+        Instance._timerGoing = false;
         UIManager.UpdateTimeUI("00:00.00");
-        _timerGoing = false;
     }
 
     public static void BeginTimer()
@@ -41,14 +48,24 @@ public class TimerController : MonoBehaviour
         Instance._timerGoing = false;
     }
 
+    public static string GetTimePlayed()
+    {
+        return Instance.TimePlayed();
+    }
+
     private IEnumerator UpdateTimer()
     {
         while (_timerGoing) {
             _elapsedTime += Time.deltaTime;
             _timePlaying = TimeSpan.FromSeconds(_elapsedTime);
-            UIManager.UpdateTimeUI(_timePlaying.ToString("mm':'ss'.'ff"));
+            UIManager.UpdateTimeUI(TimePlayed());
 
             yield return null;
         }
-    }    
+    }
+
+    private string TimePlayed()
+    {
+        return _timePlaying.ToString("mm':'ss'.'ff");
+    }
 }
