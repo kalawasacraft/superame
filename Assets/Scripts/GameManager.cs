@@ -22,13 +22,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //StartGame();
-    }
-
-    public static void StartGame()
+    public static void InitGame()
     {
         int mapIndex = PlayerPrefs.GetInt("mapIndex");
         Instance._currentMap = Instance.maps[mapIndex];
@@ -38,7 +32,12 @@ public class GameManager : MonoBehaviour
         UIManager.UpdateHealthUI(Instance._currentMap.health);
         UIManager.UpdateLeafTopUI(Instance._currentMap.goldLeafs);
         UIManager.UpdateLeafUI(Instance._currentLeafValue);
-        UIManager.UpdateTimeUI(0);
+        //TimerController.BeginTimer();
+    }
+
+    public static void StartGame()
+    {
+        TimerController.BeginTimer();
     }
 
     public static void UpdateHealth(int value)
@@ -51,7 +50,7 @@ public class GameManager : MonoBehaviour
         Instance._currentLeafValue++;
         Debug.Log(Instance._currentLeafValue);
         if (Instance._currentLeafValue >= Instance._currentMap.goldLeafs) {
-            Debug.Log("WIN!!!!!!");
+            TimerController.EndTimer();
         }
         UIManager.UpdateLeafUI(Instance._currentLeafValue);
     }

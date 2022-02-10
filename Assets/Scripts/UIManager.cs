@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public TMPro.TMP_Text leafValue;
     public TMPro.TMP_Text topLeafValue;
     public TMPro.TMP_Text timeValue;
+    public TMPro.TMP_Text countdownValue;
 
     //private Maps _currentMap;
 
@@ -38,10 +39,9 @@ public class UIManager : MonoBehaviour
         Instance.leafValue.SetText(leaf.ToString());
     }
 
-    public static void UpdateTimeUI(int time)
+    public static void UpdateTimeUI(string time)
     {
-        // convert int to ms, s, m and h
-        Instance.timeValue.SetText(time.ToString());
+        Instance.timeValue.SetText(time);
     }
 
     public static void UpdateLeafTopUI(int topLeaf)
@@ -49,9 +49,23 @@ public class UIManager : MonoBehaviour
         Instance.topLeafValue.SetText("/ " + topLeaf.ToString());
     }
 
+    public static string GetCountdownUI()
+    {
+        return Instance.countdownValue.text;
+    }
+
+    public static void UpdateCountdownUI(string value)
+    {
+        Instance.countdownValue.SetText(value);
+    }
+
+    public static void SetActiveCountdownUI(bool value)
+    {
+        Instance.countdownValue.gameObject.SetActive(value);
+    }
+
     private string getHealthString(int health)
     {
         return new string('O', health);
     }
-
 }

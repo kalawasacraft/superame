@@ -27,6 +27,10 @@ MonoBehaviour:
     m_Key: langQuit
     m_Metadata:
       m_Items: []
+  - m_Id: 12732757869678592
+    m_Key: langGo
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

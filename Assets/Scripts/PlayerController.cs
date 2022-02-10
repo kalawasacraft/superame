@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Animator _animator;
 
+    private bool _isEnabled = true;
+
     // Long Idle
     private float _longIdleTimer = 0f;
 
@@ -79,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!_isAttacking) {
+        if (!_isAttacking && _isEnabled) {
             float horizontalVelocity = _movement.normalized.x * speed;
             _rigidbody.velocity = new Vector2(horizontalVelocity, _rigidbody.velocity.y);
         }
@@ -128,5 +130,10 @@ public class PlayerController : MonoBehaviour
     {
         _intervalTwoAttack = true;
         _attackTwoTimer = 0;
+    }
+
+    public void setEnablePlayer(bool value)
+    {
+        _isEnabled = value;
     }
 }
