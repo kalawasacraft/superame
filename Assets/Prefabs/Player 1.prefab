@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4456280176734847257}
   - component: {fileID: 3868156710798906548}
   - component: {fileID: 3325393074497271332}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2848673023686435264}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FloorPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
