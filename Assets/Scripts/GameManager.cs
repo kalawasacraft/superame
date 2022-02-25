@@ -49,7 +49,13 @@ public class GameManager : MonoBehaviour
 
     public static void UpdateHealth(int value)
     {
+        Instance._currentHealthValue -= value;
+        UIManager.UpdateHealthUI(Instance._currentHealthValue);
+    }
 
+    public static int GetHealth()
+    {
+        return Instance._currentHealthValue;
     }
 
     public static void IncreaseLeaf()
@@ -61,6 +67,16 @@ public class GameManager : MonoBehaviour
             UIManager.ShowMenuCompleted();
         }
         UIManager.UpdateLeafUI(Instance._currentLeafValue);
+    }
+
+    public static void PlayerDeath()
+    {
+        TimerController.EndTimer();
+    }
+
+    public static void GameOver()
+    {
+        Time.timeScale = 0f; // Crear el MenuGameOver y llamar a la funcion correspondiente
     }
 
     public static bool IsInputMovement()

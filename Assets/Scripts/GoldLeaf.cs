@@ -17,13 +17,13 @@ public class GoldLeaf : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) {
+        if (collision.CompareTag("Contestant")) {
             GameManager.IncreaseLeaf();
             
             _collider.enabled = false;
 
             _renderer.enabled = false;
-            vanishParticles.SetActive(true);            
+            vanishParticles.SetActive(true);
 
             Destroy(gameObject, 0.6f);
         }

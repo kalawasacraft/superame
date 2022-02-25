@@ -52,6 +52,7 @@ public class ThiefPatrol : MonoBehaviour
     void FixedUpdate()
     {
         if (!_isDeath) {
+            
             RaycastHit2D groundInfo = Physics2D.Raycast(_groundSensor.position, Vector2.down, _groundSensorDistance, LayerMask.GetMask("Ground"));
             Collider2D collider = Physics2D.OverlapBox((Vector2)_playerSensor.position, _playerSensorSize, 0, LayerMask.GetMask("Player"));
 
@@ -116,14 +117,15 @@ public class ThiefPatrol : MonoBehaviour
 
     public void TakeHit(float damage)
     {
-        _hitPoints -= damage;
-        healthBarEnemy.SetHealth(_hitPoints, maxHitPoints);
-        
-        if (_hitPoints <= 0) {
-            Debug.Log("Death");
-            _isDeath = true;
-            _animator.SetTrigger("Death");
-            Invoke("Death", 1.3f);
+        if (!_isDeath) {
+            _hitPoints -= damage;
+            healthBarEnemy.SetHealth(_hitPoints, maxHitPoints);
+            
+            if (_hitPoints <= 0) {
+                _isDeath = true;
+                _animator.SetTrigger("Death");
+                Invoke("Death", 1.4f);
+            }
         }
     }
 

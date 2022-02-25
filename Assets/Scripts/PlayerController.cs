@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     private bool _intervalTwoAttack = false;
     private float _attackTwoTimer = 0f;
 
+    private bool _isDeath = false;
+
     void Awake()
     {
         instance = this;
@@ -49,37 +51,39 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if (!_isAttacking) {
-            // Movement
-            float horizontalInput = Input.GetAxisRaw("Horizontal");
-            _movement = new Vector2(horizontalInput, 0f);
+        if (!_isDeath) {
+            if (!_isAttacking) {
+                // Movement
+                float horizontalInput = Input.GetAxisRaw("Horizontal");
+                _movement = new Vector2(horizontalInput, 0f);
 
-            if ((horizontalInput < 0f && _facingRight) || (horizontalInput > 0f && !_facingRight)) {
-                Flip();
+                if ((horizontalInput < 0f && _facingRight) || (horizontalInput > 0f && !_facingRight)) {
+                    Flip();
+                }
             }
-        }
 
-        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+            _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
-        if (Input.GetButtonDown("Jump") && _isGrounded && !_isAttacking) {
-            _rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        }
-        
-        if (Input.GetButtonDown("Fire1") && _isGrounded && !_isAttacking) {
-            _movement = Vector2.zero;
-            _rigidbody.velocity = Vector2.zero;
+            if (Input.GetButtonDown("Jump") && _isGrounded && !_isAttacking) {
+                _rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            }
+            
+            if (Input.GetButtonDown("Fire1") && _isGrounded && !_isAttacking) {
+                _movement = Vector2.zero;
+                _rigidbody.velocity = Vector2.zero;
 
-            if (_numberCurrentAttack == 0) {
-                _animator.SetTrigger("AttackOne");
-            } else if (_numberCurrentAttack == 1) {
-                _animator.SetTrigger("AttackTwo");
+                if (_numberCurrentAttack == 0) {
+                    _animator.SetTrigger("AttackOne");
+                } else if (_numberCurrentAttack == 1) {
+                    _animator.SetTrigger("AttackTwo");
+                }
             }
         }
     }
 
     void FixedUpdate()
     {
-        if (!_isAttacking && GameManager.IsInputMovement()) {
+        if (!_isDeath && !_isAttacking && GameManager.IsInputMovement()) {
             float horizontalVelocity = _movement.normalized.x * speed;
             _rigidbody.velocity = new Vector2(horizontalVelocity, _rigidbody.velocity.y);
         }
@@ -87,34 +91,36 @@ public class PlayerController : MonoBehaviour
 
     void LateUpdate()
     {
-        _animator.SetBool("Idle", _movement == Vector2.zero);
-        _animator.SetBool("IsGrounded", _isGrounded);
-        _animator.SetFloat("VerticalVelocity", _rigidbody.velocity.y);
+        if (!_isDeath) {
+            _animator.SetBool("Idle", _movement == Vector2.zero);
+            _animator.SetBool("IsGrounded", _isGrounded);
+            _animator.SetFloat("VerticalVelocity", _rigidbody.velocity.y);
 
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle")) {
-            _longIdleTimer += Time.deltaTime;
-            
-            if (_longIdleTimer >= longIdleTime) {
-                _animator.SetTrigger("LongIdle");
-            }
-        } else {
-            _longIdleTimer = 0f;
-        }
-
-        if (_intervalTwoAttack) {
-            _attackTwoTimer += Time.deltaTime;
-            if (_attackTwoTimer <= attackTwoTime) {
-                _numberCurrentAttack = 1;
+            if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle")) {
+                _longIdleTimer += Time.deltaTime;
+                
+                if (_longIdleTimer >= longIdleTime) {
+                    _animator.SetTrigger("LongIdle");
+                }
             } else {
-                _numberCurrentAttack = 0;
-                _intervalTwoAttack = false;
+                _longIdleTimer = 0f;
             }
-        }
 
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) {
-            _isAttacking = true;
-        } else {
-            _isAttacking = false;
+            if (_intervalTwoAttack) {
+                _attackTwoTimer += Time.deltaTime;
+                if (_attackTwoTimer <= attackTwoTime) {
+                    _numberCurrentAttack = 1;
+                } else {
+                    _numberCurrentAttack = 0;
+                    _intervalTwoAttack = false;
+                }
+            }
+
+            if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) {
+                _isAttacking = true;
+            } else {
+                _isAttacking = false;
+            }
         }
     }
 
@@ -128,5 +134,26 @@ public class PlayerController : MonoBehaviour
     {
         _intervalTwoAttack = true;
         _attackTwoTimer = 0;
+    }
+
+    public void TakeHit(float damage) 
+    {
+        if (!_isDeath) {
+            GameManager.UpdateHealth((int)damage);
+            int health = GameManager.GetHealth();
+
+            if (health <= 0) {
+                GameManager.PlayerDeath();
+                _isDeath = true;
+                _animator.SetTrigger("Death");
+
+                Invoke("AfterDeath", 2f);
+            }
+        }
+    }
+
+    public void AfterDeath()
+    {
+        GameManager.GameOver();   
     }
 }
