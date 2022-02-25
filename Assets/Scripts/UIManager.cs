@@ -75,6 +75,11 @@ public class UIManager : MonoBehaviour
         Instance.GetComponent<MenuCompleted>().Completed();
     }
 
+    public static void ShowMenuGameOver()
+    {
+        Instance.GetComponent<MenuGameOver>().GameOver();
+    }
+
     private string getHealthString(int health)
     {
         return new string('O', health);

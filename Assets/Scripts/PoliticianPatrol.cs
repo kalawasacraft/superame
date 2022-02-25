@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThiefPatrol : MonoBehaviour
+public class PoliticianPatrol : MonoBehaviour
 {
     public float maxHitPoints;
     [SerializeField] private float _speed;
-    public float decreasedSeconds = 2f;
+    public float decreasedSeconds = 3f;
     public HealthBarEnemy healthBarEnemy;
     [SerializeField] private TMPro.TMP_Text _messageSeconds;
 
@@ -39,12 +39,14 @@ public class ThiefPatrol : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
+    // Start is called before the first frame update
     void Start()
     {
         _hitPoints = maxHitPoints;
         healthBarEnemy.SetHealth(_hitPoints, maxHitPoints);
     }
 
+    // Update is called once per frame
     void Update()
     {
         _messageSeconds.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0f,0.27f,0f));

@@ -43,6 +43,13 @@ public class TimerController : MonoBehaviour
         Instance.StartCoroutine(Instance.UpdateTimer());
     }
 
+    public static void DecreaseTime(float value)
+    {
+        if (Instance._timerGoing) {
+            Instance._elapsedTime -= value;
+        }
+    }
+
     public static void EndTimer()
     {
         Instance._timerGoing = false;
@@ -58,6 +65,8 @@ public class TimerController : MonoBehaviour
         while (_timerGoing) {
             _elapsedTime += Time.deltaTime;
             _timePlaying = TimeSpan.FromSeconds(_elapsedTime);
+            //Debug.Log(_timePlaying);
+            //Debug.Log(_elapsedTime);
             UIManager.UpdateTimeUI(TimePlayed());
 
             yield return null;

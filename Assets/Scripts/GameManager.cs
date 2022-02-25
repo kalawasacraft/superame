@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
     public static void IncreaseLeaf()
     {
         Instance._currentLeafValue++;
-        Debug.Log(Instance._currentLeafValue);
+        //Debug.Log(Instance._currentLeafValue);
         if (Instance._currentLeafValue >= Instance._currentMap.goldLeafs) {
             TimerController.EndTimer();
             UIManager.ShowMenuCompleted();
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
 
     public static void GameOver()
     {
-        Time.timeScale = 0f; // Crear el MenuGameOver y llamar a la funcion correspondiente
+        UIManager.ShowMenuGameOver();
     }
 
     public static bool IsInputMovement()

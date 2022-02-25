@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     // References
     private Rigidbody2D _rigidbody;
     private Animator _animator;
+    private SpriteRenderer _sprite;
 
     // Long Idle
     private float _longIdleTimer = 0f;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
         instance = this;
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _sprite = GetComponent<SpriteRenderer>();
     }
 
     // Start is called before the first frame update
@@ -86,6 +88,8 @@ public class PlayerController : MonoBehaviour
         if (!_isDeath && !_isAttacking && GameManager.IsInputMovement()) {
             float horizontalVelocity = _movement.normalized.x * speed;
             _rigidbody.velocity = new Vector2(horizontalVelocity, _rigidbody.velocity.y);
+        } else if (_isDeath) {
+            _rigidbody.velocity = Vector2.zero;
         }
     }
 
@@ -142,6 +146,9 @@ public class PlayerController : MonoBehaviour
             GameManager.UpdateHealth((int)damage);
             int health = GameManager.GetHealth();
 
+            _sprite.color = new Color(1f, 0.5f, 0.5f, 1f);
+
+            Invoke("refreshColor", 0.3f);
             if (health <= 0) {
                 GameManager.PlayerDeath();
                 _isDeath = true;
@@ -155,5 +162,10 @@ public class PlayerController : MonoBehaviour
     public void AfterDeath()
     {
         GameManager.GameOver();   
+    }
+
+    public void refreshColor()
+    {
+        _sprite.color = new Color(1f, 1f, 1f, 1f);
     }
 }
