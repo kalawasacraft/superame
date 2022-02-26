@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     private int _currentLeafValue;
     private int _currentHealthValue;
     private Maps _currentMap;
+    private bool _isFullAttack = false;
+    private bool _isFullShield = false;
 
     void Awake()
     {
@@ -58,6 +60,12 @@ public class GameManager : MonoBehaviour
         return Instance._currentHealthValue;
     }
 
+    public static void RestoreHealth()
+    {
+        Instance._currentHealthValue = Instance._currentMap.health;
+        UIManager.UpdateHealthUI(Instance._currentHealthValue);
+    }
+
     public static void IncreaseLeaf()
     {
         Instance._currentLeafValue++;
@@ -82,6 +90,54 @@ public class GameManager : MonoBehaviour
     public static bool IsInputMovement()
     {
         return Instance._inputMovement;
+    }
+
+    public static void InitFullAttack(float time)
+    {
+        Instance.StartCoroutine(Instance.CountdownAttack(time));
+    }
+
+    public static bool IsFullAttack()
+    {
+        if (!Instance._isFullAttack) {
+            Instance.StopCoroutine(Instance.CountdownAttack(0f));
+        }
+        return Instance._isFullAttack;
+    }
+
+    private IEnumerator CountdownAttack(float time)
+    {
+        _isFullAttack = true;
+        while(time > 0) {
+            time -= Time.deltaTime;
+            yield return null;
+        }
+        _isFullAttack = false;
+        yield return null;
+    }
+
+    public static void InitFullShield(float time)
+    {
+        Instance.StartCoroutine(Instance.CountdownShield(time));
+    }
+
+    public static bool IsFullShield()
+    {
+        if (!Instance._isFullShield) {
+            Instance.StopCoroutine(Instance.CountdownShield(0f));
+        }
+        return Instance._isFullShield;
+    }
+
+    private IEnumerator CountdownShield(float time)
+    {
+        _isFullShield = true;
+        while(time > 0) {
+            time -= Time.deltaTime;
+            yield return null;
+        }
+        _isFullShield = false;
+        yield return null;
     }
 
     public static int RandomNumber(int min, int max)

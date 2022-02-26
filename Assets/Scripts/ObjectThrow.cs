@@ -36,7 +36,7 @@ public class ObjectThrow : MonoBehaviour
             if (_isLaunch) {
                 _isLaunch = false;
 
-                _direction.y = 0.578f;
+                _direction.y = 0.75f;
                 _rigidbody.AddForce(_direction * _speed, ForceMode2D.Impulse);
 
                 _animator.Play("Idle"+GameManager.RandomNumber(1,6).ToString());

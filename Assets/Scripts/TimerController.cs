@@ -24,8 +24,6 @@ public class TimerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*UIManager.UpdateTimeUI("00:00.00");
-        _timerGoing = false;*/
         RestartTimer();
     }
 
@@ -65,8 +63,7 @@ public class TimerController : MonoBehaviour
         while (_timerGoing) {
             _elapsedTime += Time.deltaTime;
             _timePlaying = TimeSpan.FromSeconds(_elapsedTime);
-            //Debug.Log(_timePlaying);
-            //Debug.Log(_elapsedTime);
+
             UIManager.UpdateTimeUI(TimePlayed());
 
             yield return null;

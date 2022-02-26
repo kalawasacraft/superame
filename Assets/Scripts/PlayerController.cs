@@ -15,6 +15,11 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public float groundCheckRadius;
 
+    public Transform effectPoint;
+    public GameObject attackEffect;
+    public GameObject healthEffect;
+    public GameObject shieldEffect;
+
     // References
     private Rigidbody2D _rigidbody;
     private Animator _animator;
@@ -142,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeHit(float damage) 
     {
-        if (!_isDeath) {
+        if (!_isDeath && !GameManager.IsFullShield()) {
             GameManager.UpdateHealth((int)damage);
             int health = GameManager.GetHealth();
 
@@ -157,6 +162,30 @@ public class PlayerController : MonoBehaviour
                 Invoke("AfterDeath", 2f);
             }
         }
+    }
+
+    public void InitEffectAttack(float time)
+    {
+        GameObject childEffect = Instantiate(attackEffect) as GameObject;
+        childEffect.transform.parent = transform;
+        childEffect.transform.position = effectPoint.position;
+        Destroy(childEffect, time);
+    }
+
+    public void InitEffectShield(float time)
+    {
+        GameObject childEffect = Instantiate(shieldEffect) as GameObject;
+        childEffect.transform.parent = transform;
+        childEffect.transform.position = effectPoint.position;
+        Destroy(childEffect, time);
+    }
+
+    public void InitEffectHealth(float time)
+    {
+        GameObject childEffect = Instantiate(healthEffect) as GameObject;
+        childEffect.transform.parent = transform;
+        childEffect.transform.position = effectPoint.position;
+        Destroy(childEffect, time);
     }
 
     public void AfterDeath()

@@ -33,7 +33,11 @@ public class PlayerAttack : MonoBehaviour
         if (_isAttacking && !_isHit) {
             if (collision.CompareTag("EnemyHealth")) {
                 _isHit = true;
-                collision.SendMessageUpwards("TakeHit", _damage);
+                if (GameManager.IsFullAttack()) {
+                    collision.SendMessageUpwards("TakeHit", Mathf.Infinity);
+                } else {
+                    collision.SendMessageUpwards("TakeHit", _damage);
+                }
 
                 if (_animator.GetCurrentAnimatorStateInfo(0).IsName("AttackOne")) {
                     GameObject instantiatedJab = Instantiate(hitJabParticles, pointJab.position, Quaternion.identity) as GameObject;

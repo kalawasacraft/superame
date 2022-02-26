@@ -113,7 +113,7 @@ public class ThiefPatrol : MonoBehaviour
     public void TakeHit(float damage)
     {
         if (!_isDeath) {
-            _hitPoints -= damage;
+            _hitPoints = Mathf.Max(_hitPoints - damage, 0f);
             healthBarEnemy.SetHealth(_hitPoints, maxHitPoints);
             
             if (_hitPoints <= 0) {
