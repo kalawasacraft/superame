@@ -32,12 +32,18 @@ public class PlayerController : MonoBehaviour
     private Vector2 _movement;
     private bool _facingRight = true;
     private bool _isGrounded = false;
+    private Vector3 _velocity = Vector3.zero;
+    [SerializeField] private float smoothVelocity;
 
     // Attack
     private bool _isAttacking = false;
     private int _numberCurrentAttack = 0;
     private bool _intervalTwoAttack = false;
     private float _attackTwoTimer = 0f;
+
+    // Jump
+    private float _airTime = 0f;
+    private bool _isJumping = false;
 
     private bool _isDeath = false;
 
@@ -71,11 +77,19 @@ public class PlayerController : MonoBehaviour
 
             _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
-            if (Input.GetButtonDown("Jump") && _isGrounded && !_isAttacking) {
+            if (_isGrounded) {
+                _airTime = 0f;
+                _isJumping = false;
+            } else {
+                _airTime += Time.deltaTime;
+            }
+
+            if (Input.GetButtonDown("Jump") && (_isGrounded || (!_isJumping && _airTime < 0.25f)) && !_isAttacking) {
                 _rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                _isJumping = true;
             }
             
-            if (Input.GetButtonDown("Fire1") && _isGrounded && !_isAttacking) {
+            if (Input.GetButtonDown("Fire2") && _isGrounded && !_isAttacking) {
                 _movement = Vector2.zero;
                 _rigidbody.velocity = Vector2.zero;
 
@@ -92,7 +106,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!_isDeath && !_isAttacking && GameManager.IsInputMovement()) {
             float horizontalVelocity = _movement.normalized.x * speed;
-            _rigidbody.velocity = new Vector2(horizontalVelocity, _rigidbody.velocity.y);
+            //_rigidbody.velocity = new Vector2(horizontalVelocity, _rigidbody.velocity.y);
+            _rigidbody.velocity = Vector3.SmoothDamp(_rigidbody.velocity, new Vector2(horizontalVelocity, _rigidbody.velocity.y), ref _velocity, smoothVelocity);
         } else if (_isDeath) {
             _rigidbody.velocity = Vector2.zero;
         }
@@ -152,8 +167,8 @@ public class PlayerController : MonoBehaviour
             int health = GameManager.GetHealth();
 
             _sprite.color = new Color(1f, 0.5f, 0.5f, 1f);
-
             Invoke("refreshColor", 0.3f);
+            
             if (health <= 0) {
                 GameManager.PlayerDeath();
                 _isDeath = true;

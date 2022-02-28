@@ -32,11 +32,13 @@ public class PoliticianPatrol : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     private Animator _animator;
+    private SpriteRenderer _sprite;
 
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _sprite = GetComponent<SpriteRenderer>();
     }
 
     // Start is called before the first frame update
@@ -117,6 +119,9 @@ public class PoliticianPatrol : MonoBehaviour
         if (!_isDeath) {
             _hitPoints = Mathf.Max(_hitPoints - damage, 0f);
             healthBarEnemy.SetHealth(_hitPoints, maxHitPoints);
+
+            _sprite.color = new Color(1f, 0.5f, 0.5f, 1f);
+            Invoke("refreshColor", 0.3f);
             
             if (_hitPoints <= 0) {
                 _isDeath = true;
@@ -137,5 +142,10 @@ public class PoliticianPatrol : MonoBehaviour
             Gizmos.color = gizmoplayerSensorColor;
             Gizmos.DrawCube((Vector2)_playerSensor.position, _playerSensorSize);
         }
+    }
+
+    public void refreshColor()
+    {
+        _sprite.color = new Color(1f, 1f, 1f, 1f);
     }
 }

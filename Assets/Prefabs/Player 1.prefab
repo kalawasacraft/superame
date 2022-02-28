@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 186609560865918265}
   - component: {fileID: 3449141933318870045}
   - component: {fileID: 4456280176734847257}
-  - component: {fileID: 3868156710798906548}
+  - component: {fileID: 594157319579855545}
   - component: {fileID: 3325393074497271332}
   - component: {fileID: 1358929460561907938}
   m_Layer: 8
@@ -221,8 +221,8 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!70 &3868156710798906548
-CapsuleCollider2D:
+--- !u!61 &594157319579855545
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -234,9 +234,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.087}
-  m_Size: {x: 0.15, y: 0.3}
-  m_Direction: 0
+  m_Offset: {x: -0.0007454157, y: -0.087490626}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.10022095, y: 0.27182627}
+  m_EdgeRadius: 0
 --- !u!114 &3325393074497271332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,6 +272,7 @@ MonoBehaviour:
   attackEffect: {fileID: 717987261564841515, guid: 753c7a72f4d3e74bd838303d929a0c7b, type: 3}
   healthEffect: {fileID: 3104687584567840197, guid: b934f2a8eba3445dbb8c38ab81072051, type: 3}
   shieldEffect: {fileID: 5282196258298045331, guid: 95aaff2b64fdb297bb6402c602ef12ae, type: 3}
+  smoothVelocity: 0.025
 --- !u!114 &1358929460561907938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,8 +363,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0050174, y: -0.013164699}
-  m_Size: {x: 0.17554319, y: 0.4376241}
+  m_Offset: {x: -0.0027834773, y: -0.01874952}
+  m_Size: {x: 0.15767175, y: 0.39071164}
   m_Direction: 0
 --- !u!1 &3967421115398247845
 GameObject:
