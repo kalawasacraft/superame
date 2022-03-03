@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class MenuCompleted : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class MenuCompleted : MonoBehaviour
     [SerializeField] private GameObject _menuCompleted;
     [SerializeField] private TMPro.TMP_Text _message;
     [SerializeField] private TMPro.TMP_Text _timePlayed;
+    public GameObject firstSelected;
 
     private LocalizedStringTable _stringTable = new LocalizedStringTable { TableReference = "LanguageText" };
     
@@ -29,6 +31,9 @@ public class MenuCompleted : MonoBehaviour
         Time.timeScale = 0f;
         _buttonPause.SetActive(false);
         _menuCompleted.SetActive(true);
+
+        EventSystem eventSystem = EventSystem.current;
+        eventSystem.SetSelectedGameObject(firstSelected, new BaseEventData(eventSystem));
     }
 
     public void Restart()

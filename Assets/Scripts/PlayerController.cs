@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if (!_isDeath) {
+        if (!_isDeath && !GameManager.GetGameIsPaused()) {
             if (!_isAttacking) {
                 // Movement
                 float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -84,7 +84,9 @@ public class PlayerController : MonoBehaviour
                 _airTime += Time.deltaTime;
             }
 
-            if (Input.GetButtonDown("Jump") && (_isGrounded || (!_isJumping && _airTime < 0.25f)) && !_isAttacking) {
+            if (Input.GetButtonDown("Jump") && (_isGrounded || (!_isJumping && _airTime < 0.2f)) && !_isAttacking) {
+            //if (Input.GetButtonDown("Jump") && !_isJumping && (_isGrounded || _airTime < 0.25f) && !_isAttacking) {
+                _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
                 _rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 _isJumping = true;
             }
@@ -109,7 +111,7 @@ public class PlayerController : MonoBehaviour
             //_rigidbody.velocity = new Vector2(horizontalVelocity, _rigidbody.velocity.y);
             _rigidbody.velocity = Vector3.SmoothDamp(_rigidbody.velocity, new Vector2(horizontalVelocity, _rigidbody.velocity.y), ref _velocity, smoothVelocity);
         } else if (_isDeath) {
-            _rigidbody.velocity = Vector2.zero;
+            _rigidbody.velocity = new Vector2(0f, _rigidbody.velocity.y);
         }
     }
 

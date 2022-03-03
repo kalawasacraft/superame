@@ -12,8 +12,6 @@ public class UIManager : MonoBehaviour
     public TMPro.TMP_Text countdownValue;
     public GameObject buttonPause;
 
-    //private Maps _currentMap;
-
     void Awake()
     {
         if (UIManager.Instance == null) {

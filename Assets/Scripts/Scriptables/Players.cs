@@ -6,5 +6,5 @@ using UnityEngine;
 public class Players : ScriptableObject
 {
     public GameObject player;
-    public Sprite sprite;
+    public int animationIndex;
 }

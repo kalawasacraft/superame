@@ -7,13 +7,16 @@ using UnityEngine.SceneManagement;
 public class SelectedPlayer : MonoBehaviour
 {
     private int _playerIndex;
-    [SerializeField] private Image _playerImage;
+    [SerializeField] private GameObject _character;
     private GameManager _gameManager;
+    private Animator _animatorCharacter;
 
     // Start is called before the first frame update
     void Start()
     {
         _gameManager = GameManager.Instance;
+        _animatorCharacter = _character.GetComponent<Animator>();
+
         _playerIndex = PlayerPrefs.GetInt("playerIndex");
 
         if (_playerIndex >= _gameManager.players.Count) {
@@ -26,7 +29,7 @@ public class SelectedPlayer : MonoBehaviour
     private void ChangePlayer()
     {
         PlayerPrefs.SetInt("playerIndex", _playerIndex);
-        _playerImage.sprite = _gameManager.players[_playerIndex].sprite;
+        _animatorCharacter.Play("Player"+_gameManager.players[_playerIndex].animationIndex.ToString());
     }
 
     public void NextPlayer()

@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     private Maps _currentMap;
     private bool _isFullAttack = false;
     private bool _isFullShield = false;
+    private bool _gameInProgress = false;
+    private bool _gameIsPaused = false;
 
     void Awake()
     {
@@ -39,12 +41,14 @@ public class GameManager : MonoBehaviour
 
     public static void RestartGame()
     {
+        Instance._gameInProgress = false;
         Instance._inputMovement = false;
         TimerController.RestartTimer();
     }
 
     public static void StartGame()
     {
+        Instance._gameInProgress = true;
         Instance._inputMovement = true;
         TimerController.BeginTimer();
     }
@@ -71,6 +75,7 @@ public class GameManager : MonoBehaviour
         Instance._currentLeafValue++;
         //Debug.Log(Instance._currentLeafValue);
         if (Instance._currentLeafValue >= Instance._currentMap.goldLeafs) {
+            Instance._gameInProgress = false;
             TimerController.EndTimer();
             UIManager.ShowMenuCompleted();
         }
@@ -79,6 +84,7 @@ public class GameManager : MonoBehaviour
 
     public static void PlayerDeath()
     {
+        Instance._gameInProgress = false;
         TimerController.EndTimer();
     }
 
@@ -90,6 +96,21 @@ public class GameManager : MonoBehaviour
     public static bool IsInputMovement()
     {
         return Instance._inputMovement;
+    }
+
+    public static bool IsGameInProgress()
+    {
+        return Instance._gameInProgress;
+    }
+
+    public static void SetGameIsPaused(bool value)
+    {
+        Instance._gameIsPaused = value;
+    }
+
+    public static bool GetGameIsPaused()
+    {
+        return Instance._gameIsPaused;
     }
 
     public static void InitFullAttack(float time)

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 8881577039039603663, guid: cf0de47a5bb7c927cad015c7f108e1ae, type: 3}
   sprite: {fileID: 1448174220338952843, guid: 13d745a0347ca5929b084492b411cd16, type: 3}
+  animationIndex: 2

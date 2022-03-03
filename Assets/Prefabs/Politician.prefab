@@ -608,7 +608,7 @@ MonoBehaviour:
   objectThrow: {fileID: 8512739024054539491, guid: 4346870ab42e89c24b12e812cb14d38a, type: 3}
   pointThrow: {fileID: 2482087191490607626}
   damage: 1
-  speedThrow: 3.5
+  speedThrow: 4.5
 --- !u!1 &6924897013668274734
 GameObject:
   m_ObjectHideFlags: 0
