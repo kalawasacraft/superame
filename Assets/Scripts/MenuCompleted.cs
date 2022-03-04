@@ -14,10 +14,15 @@ public class MenuCompleted : MonoBehaviour
     public GameObject firstSelected;
 
     private LocalizedStringTable _stringTable = new LocalizedStringTable { TableReference = "LanguageText" };
-    
-    private void Init()
+
+    private void Init(float timeValue)
     {
         Time.timeScale = 1f;
+        Invoke("InitAction", timeValue);
+    }
+
+    private void InitAction()
+    {
         _buttonPause.SetActive(false);
         _menuCompleted.SetActive(false);
     }
@@ -38,13 +43,23 @@ public class MenuCompleted : MonoBehaviour
 
     public void Restart()
     {
-        Init();
+        Init(0.1f);
+        Invoke("RestartAction", 0.1f);
+    }
+
+    private void RestartAction()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Quit()
     {
-        Init();
+        Init(0.2f);
+        Invoke("QuitAction", 0.2f);
+    }
+
+    public void QuitAction()
+    {
         SceneManager.LoadScene(0);
     }
 }

@@ -45,6 +45,11 @@ public class SelectedMap : MonoBehaviour
 
     public void StartGame()
     {
+        Invoke("ChangeScene", 0.2f);
+    }
+
+    private void ChangeScene()
+    {
         SceneManager.LoadScene(_gameManager.maps[_mapIndex].positionBuildScene);
     }
 }

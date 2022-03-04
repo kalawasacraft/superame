@@ -73,13 +73,16 @@ public class GameManager : MonoBehaviour
     public static void IncreaseLeaf()
     {
         Instance._currentLeafValue++;
-        //Debug.Log(Instance._currentLeafValue);
+        UIManager.UpdateLeafUI(Instance._currentLeafValue);
+        
         if (Instance._currentLeafValue >= Instance._currentMap.goldLeafs) {
             Instance._gameInProgress = false;
+            
             TimerController.EndTimer();
+            StatesSoundController.CompletedPlay();
+
             UIManager.ShowMenuCompleted();
         }
-        UIManager.UpdateLeafUI(Instance._currentLeafValue);
     }
 
     public static void PlayerDeath()

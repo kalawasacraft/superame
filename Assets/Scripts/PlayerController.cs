@@ -175,7 +175,8 @@ public class PlayerController : MonoBehaviour
                 GameManager.PlayerDeath();
                 _isDeath = true;
                 _animator.SetTrigger("Death");
-
+                
+                Invoke("PlayerIsDeathEffect", 0.5f);
                 Invoke("AfterDeath", 2f);
             }
         }
@@ -213,5 +214,10 @@ public class PlayerController : MonoBehaviour
     public void refreshColor()
     {
         _sprite.color = new Color(1f, 1f, 1f, 1f);
+    }
+
+    private void PlayerIsDeathEffect()
+    {
+        StatesSoundController.DefeatedPlay();
     }
 }

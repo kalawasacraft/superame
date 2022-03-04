@@ -19,16 +19,23 @@ public class MenuPause : MonoBehaviour
     {
         if (GameManager.IsGameInProgress() && Input.GetKeyDown(KeyCode.Escape)) {
             if (_isPaused) {
+                SoundsManager.BackPlay();
                 Resume();
             } else {
+                SoundsManager.ConfirmPlay();
                 Pause();
             }
         }
     }
 
-    private void Init()
+    private void Init(float timeValue)
     {
         Time.timeScale = 1f;
+        Invoke("InitAction", timeValue);
+    }
+
+    private void InitAction()
+    {
         _isPaused = false;
         GameManager.SetGameIsPaused(_isPaused);
 
@@ -54,6 +61,11 @@ public class MenuPause : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1f;
+        Invoke("ResumeAction", 0.1f);
+    }
+
+    private void ResumeAction() 
+    {
         _isPaused = false;
         GameManager.SetGameIsPaused(_isPaused);
 
@@ -63,13 +75,23 @@ public class MenuPause : MonoBehaviour
 
     public void Restart()
     {
-        Init();
+        Init(0.1f);
+        Invoke("RestartAction", 0.1f);
+    }
+
+    private void RestartAction()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Quit()
     {
-        Init();
+        Init(0.2f);
+        Invoke("QuitAction", 0.2f);
+    }
+
+    public void QuitAction()
+    {
         SceneManager.LoadScene(0);
     }
 }

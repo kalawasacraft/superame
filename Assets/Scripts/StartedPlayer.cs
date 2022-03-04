@@ -48,17 +48,19 @@ public class StartedPlayer : MonoBehaviour
 
         while (seconds > 0) {
 
+            StatesSoundController.CounterPlay();
             UIManager.UpdateCountdownUI(seconds.ToString());
             yield return new WaitForSeconds(1f);
 
             seconds--;
         }
 
+        //SoundsManager.CounterPlay();
+        StatesSoundController.StartPlay();
         UIManager.UpdateCountdownUI(_stringTable.GetTable().GetEntry("langGo").GetLocalizedString());
-
-        yield return new WaitForSeconds(1f);
-
         GameManager.StartGame();
+        
+        yield return new WaitForSeconds(0.5f);        
 
         UIManager.SetActiveCountdownUI(false);
         UIManager.EnabledPause(true);
