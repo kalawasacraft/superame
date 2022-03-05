@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EffectHealth : MonoBehaviour
 {
-    public float timeEffect = 0.1f;
+    public float timeEffect = 0.5f;
 
     private Collider2D _collider;
 

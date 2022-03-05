@@ -9,7 +9,12 @@ public class ArticleController : MonoBehaviour
 
     private GameObject _currentArticle;
     private float _currentTime;
+    private AudioSource _audio;
     
+    void Awake()
+    {
+        _audio = GetComponent<AudioSource>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +29,7 @@ public class ArticleController : MonoBehaviour
 
             _currentTime += Time.deltaTime;
             if (_currentTime >= waitTime) {
+                _audio.Play();
 
                 _currentArticle = Instantiate(articles[GameManager.RandomNumber(0, articles.Length)], transform.position, Quaternion.identity) as GameObject;
                 _currentTime = 0f;

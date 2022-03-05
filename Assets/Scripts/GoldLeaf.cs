@@ -8,16 +8,19 @@ public class GoldLeaf : MonoBehaviour
 
     private SpriteRenderer _renderer;
     private Collider2D _collider;
+    private AudioSource _audio;
 
     void Awake()
     {
         _renderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
+        _audio = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Contestant")) {
+            _audio.Play();
             GameManager.IncreaseLeaf();
             
             _collider.enabled = false;

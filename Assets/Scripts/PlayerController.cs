@@ -187,6 +187,7 @@ public class PlayerController : MonoBehaviour
         GameObject childEffect = Instantiate(attackEffect) as GameObject;
         childEffect.transform.parent = transform;
         childEffect.transform.position = effectPoint.position;
+        childEffect.SendMessageUpwards("SoundPlay");
         Destroy(childEffect, time);
     }
 
@@ -195,6 +196,7 @@ public class PlayerController : MonoBehaviour
         GameObject childEffect = Instantiate(shieldEffect) as GameObject;
         childEffect.transform.parent = transform;
         childEffect.transform.position = effectPoint.position;
+        childEffect.SendMessageUpwards("SoundPlay");
         Destroy(childEffect, time);
     }
 
@@ -203,6 +205,7 @@ public class PlayerController : MonoBehaviour
         GameObject childEffect = Instantiate(healthEffect) as GameObject;
         childEffect.transform.parent = transform;
         childEffect.transform.position = effectPoint.position;
+        childEffect.SendMessageUpwards("SoundPlay");
         Destroy(childEffect, time);
     }
 
