@@ -10,6 +10,7 @@ public class StatesSoundController : MonoBehaviour
     public AudioClip start;
     public AudioClip completed;
     public AudioClip defeated;
+    public AudioClip gainTime;
 
     private AudioSource _audio;
 
@@ -46,6 +47,12 @@ public class StatesSoundController : MonoBehaviour
     public static void DefeatedPlay()
     {
         Instance._audio.clip = Instance.defeated;
+        Instance.PlayAudio();
+    }
+
+    public static void GainTimePlay()
+    {
+        Instance._audio.clip = Instance.gainTime;
         Instance.PlayAudio();
     }
 

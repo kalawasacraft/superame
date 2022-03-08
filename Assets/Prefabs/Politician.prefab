@@ -583,7 +583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 3
   _speed: 0.5
-  decreasedSeconds: 3
+  decreasedSeconds: 4
   healthBarEnemy: {fileID: 6321701070779849445}
   _messageSeconds: {fileID: 2704515599640197499}
   _groundSensor: {fileID: 8876174051138843650}
@@ -605,6 +605,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f92976dfbad0580a1876d2e448709035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitImpactParticles: {fileID: 1624753189779215880, guid: 82877caa69b529a3e825860cb27cc78d, type: 3}
+  harmSound: {fileID: 8300000, guid: 9ec903c862be1b986b17a49e10ffaa0d, type: 3}
   objectThrow: {fileID: 8512739024054539491, guid: 4346870ab42e89c24b12e812cb14d38a, type: 3}
   pointThrow: {fileID: 2482087191490607626}
   damage: 1

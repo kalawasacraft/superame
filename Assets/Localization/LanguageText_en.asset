@@ -90,5 +90,42 @@ MonoBehaviour:
     m_Localized: Ha-ha!, pausing is for the weak.
     m_Metadata:
       m_Items: []
+  - m_Id: 22121188869623808
+    m_Localized: Can you collect the golden coca leaves in the shortest possible
+      time?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22121940316934144
+    m_Localized: Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22122377292107776
+    m_Localized: Jump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22122464965644288
+    m_Localized: Attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22122562298662912
+    m_Localized: Decrease your time defeating enemies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22122781719482368
+    m_Localized: Infinity attack soda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22123191800778752
+    m_Localized: Absolute shield snack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22123417718575104
+    m_Localized: Recovery grilled chicken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22134783577772032
+    m_Localized: Confirm / Pause
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

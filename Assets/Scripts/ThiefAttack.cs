@@ -32,14 +32,15 @@ public class ThiefAttack : MonoBehaviour
         if (_isAttacking && !_isHit) {
             if (collision.CompareTag("PlayerHealth")) {
                 _isHit = true;
-                collision.SendMessageUpwards("TakeHit", damage);
 
-                Debug.Log("damage!!!!");
+                //collision.GetComponent<AudioSource>().Play();
+                collision.SendMessageUpwards("TakeHit", damage);
 
                 GameObject instantiatedCut = Instantiate(hitCutParticles, pointCut.position, Quaternion.identity) as GameObject;
                 instantiatedCut.transform.localScale = new Vector3(transform.localScale.x, 
                                                                     instantiatedCut.transform.localScale.y, 
                                                                     instantiatedCut.transform.localScale.z);
+                instantiatedCut.GetComponent<AudioSource>().Play();
 
                 Destroy(instantiatedCut, instantiatedCut.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
             }

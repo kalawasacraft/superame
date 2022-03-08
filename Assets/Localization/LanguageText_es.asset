@@ -90,5 +90,42 @@ MonoBehaviour:
     m_Localized: Ja ja!, pausar es para debiles.
     m_Metadata:
       m_Items: []
+  - m_Id: 22121188869623808
+    m_Localized: "\xBFPodr\xE1s recolectar las hojas doradas de coca en el menor
+      tiempo posible?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22121940316934144
+    m_Localized: Mover
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22122377292107776
+    m_Localized: Saltar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22122464965644288
+    m_Localized: Atacar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22122562298662912
+    m_Localized: Disminuye tu tiempo derrotando enemigos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22122781719482368
+    m_Localized: Gaseosa del ataque infinito
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22123191800778752
+    m_Localized: Snack del escudo absoluto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22123417718575104
+    m_Localized: "Pollo a la brasa de la recuperaci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22134783577772032
+    m_Localized: Confirmar / Pausar
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

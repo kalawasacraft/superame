@@ -19,11 +19,13 @@ public class PlayerController : MonoBehaviour
     public GameObject attackEffect;
     public GameObject healthEffect;
     public GameObject shieldEffect;
+    public GameObject hurtBox;
 
     // References
     private Rigidbody2D _rigidbody;
     private Animator _animator;
     private SpriteRenderer _sprite;
+    private AudioSource _audio;
 
     // Long Idle
     private float _longIdleTimer = 0f;
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _sprite = GetComponent<SpriteRenderer>();
+        _audio = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -89,6 +92,8 @@ public class PlayerController : MonoBehaviour
                 _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
                 _rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 _isJumping = true;
+                
+                _audio.Play();
             }
             
             if (Input.GetButtonDown("Fire2") && _isGrounded && !_isAttacking) {
@@ -165,6 +170,9 @@ public class PlayerController : MonoBehaviour
     public void TakeHit(float damage) 
     {
         if (!_isDeath && !GameManager.IsFullShield()) {
+
+            hurtBox.GetComponent<AudioSource>().Play();
+
             GameManager.UpdateHealth((int)damage);
             int health = GameManager.GetHealth();
 

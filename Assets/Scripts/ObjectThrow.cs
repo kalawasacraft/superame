@@ -6,6 +6,9 @@ public class ObjectThrow : MonoBehaviour
 {
     public GameObject hitCutParticles;
     public GameObject hitSplashParticles;
+    public AudioClip cutSound;
+    public AudioClip impactSound;
+    public AudioClip punchSound;
 	
     private Rigidbody2D _rigidbody;
     private Animator _animator;
@@ -47,13 +50,21 @@ public class ObjectThrow : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
 	{
         if (collision.CompareTag("PlayerHealth")) {
-            
+
+            //collision.GetComponent<AudioSource>().Play();
             collision.SendMessageUpwards("TakeHit", _damage);
 
             GameObject instantiatedCut = Instantiate(hitCutParticles, transform.position, Quaternion.identity) as GameObject;
             instantiatedCut.transform.localScale = new Vector3(transform.localScale.x, 
                                                                 instantiatedCut.transform.localScale.y, 
                                                                 instantiatedCut.transform.localScale.z);
+            AudioSource audioInstanciated = instantiatedCut.GetComponent<AudioSource>();
+            if (_kindThrow) {
+                audioInstanciated.clip = cutSound;
+            } else {
+                audioInstanciated.clip = impactSound;
+            }
+            audioInstanciated.Play();
 
             Destroy(instantiatedCut, instantiatedCut.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
@@ -74,6 +85,9 @@ public class ObjectThrow : MonoBehaviour
             instantiatedSplash.transform.localScale = new Vector3(transform.localScale.x, 
                                                                 instantiatedSplash.transform.localScale.y, 
                                                                 instantiatedSplash.transform.localScale.z);
+            AudioSource audioInstanciated = instantiatedSplash.GetComponent<AudioSource>();
+            audioInstanciated.clip = punchSound;
+            audioInstanciated.Play();
 
             Destroy(instantiatedSplash, instantiatedSplash.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
 

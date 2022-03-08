@@ -87,6 +87,42 @@ MonoBehaviour:
     m_Key: langMsgPause_2
     m_Metadata:
       m_Items: []
+  - m_Id: 22121188869623808
+    m_Key: langMsgHelp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22121940316934144
+    m_Key: langHelpMove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22122377292107776
+    m_Key: langHelpJump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22122464965644288
+    m_Key: langHelpAttack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22122562298662912
+    m_Key: langHelpDecreaseTime
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22122781719482368
+    m_Key: langHelpMsgAttack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22123191800778752
+    m_Key: langHelpMsgShield
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22123417718575104
+    m_Key: langHelpMsgRecover
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22134783577772032
+    m_Key: langHelpPause
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

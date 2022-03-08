@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public List<Players> players;
     public List<Maps> maps;
 
+    private bool _isFirstOpenGame = true;
     private bool _inputMovement;
     private int _currentLeafValue;
     private int _currentHealthValue;
@@ -94,6 +95,16 @@ public class GameManager : MonoBehaviour
     public static void GameOver()
     {
         UIManager.ShowMenuGameOver();
+    }
+
+    public static bool IsFirstOpenGame()
+    {
+        return Instance._isFirstOpenGame;
+    }
+
+    public static void SetIsFirstOpenGame(bool value)
+    {
+        Instance._isFirstOpenGame = value;
     }
 
     public static bool IsInputMovement()

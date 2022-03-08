@@ -43,8 +43,9 @@ public class TimerController : MonoBehaviour
 
     public static void DecreaseTime(float value)
     {
+        StatesSoundController.GainTimePlay();
         if (Instance._timerGoing) {
-            Instance._elapsedTime -= value;
+            Instance._elapsedTime = Mathf.Max(Instance._elapsedTime - value, 0f);
         }
     }
 

@@ -44,13 +44,15 @@ public class PlayerAttack : MonoBehaviour
                     instantiatedJab.transform.localScale = new Vector3(transform.localScale.x, 
                                                                         instantiatedJab.transform.localScale.y, 
                                                                         instantiatedJab.transform.localScale.z);
-
+                    instantiatedJab.GetComponent<AudioSource>().Play();
+                    
                     Destroy(instantiatedJab, instantiatedJab.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
                 } else {
                     GameObject instantiatedUppercut = Instantiate(hitUppercutParticles, pointJab.position, Quaternion.identity) as GameObject;
                     instantiatedUppercut.transform.localScale = new Vector3(transform.localScale.x, 
                                                                             instantiatedUppercut.transform.localScale.y, 
                                                                             instantiatedUppercut.transform.localScale.z);
+                    instantiatedUppercut.GetComponent<AudioSource>().Play();
 
                     Destroy(instantiatedUppercut, instantiatedUppercut.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
                 }

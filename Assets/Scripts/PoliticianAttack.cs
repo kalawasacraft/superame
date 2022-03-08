@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PoliticianAttack : MonoBehaviour
 {
-    //public GameObject hitCutParticles;
-    //public Transform pointCut;
+    public GameObject hitImpactParticles;
+    public AudioClip harmSound;
     public GameObject objectThrow;
     public Transform pointThrow;
     public float damage = 1f;
@@ -31,16 +31,19 @@ public class PoliticianAttack : MonoBehaviour
         if (_isAttacking && !_isHit) {
             if (collision.CompareTag("PlayerHealth")) {
                 _isHit = true;
+
+                //collision.GetComponent<AudioSource>().Play();
                 collision.SendMessageUpwards("TakeHit", damage);
 
-                Debug.Log("damage!!!!");
+                GameObject instantiatedImpact = Instantiate(hitImpactParticles, collision.transform.position, Quaternion.identity) as GameObject;
+                instantiatedImpact.transform.localScale = new Vector3(transform.localScale.x, 
+                                                                    instantiatedImpact.transform.localScale.y, 
+                                                                    instantiatedImpact.transform.localScale.z);
+                AudioSource audioInstanciated = instantiatedImpact.GetComponent<AudioSource>();
+                audioInstanciated.clip = harmSound;
+                audioInstanciated.Play();
 
-                /*GameObject instantiatedCut = Instantiate(hitCutParticles, pointCut.position, Quaternion.identity) as GameObject;
-                instantiatedCut.transform.localScale = new Vector3(transform.localScale.x, 
-                                                                    instantiatedCut.transform.localScale.y, 
-                                                                    instantiatedCut.transform.localScale.z);
-
-                Destroy(instantiatedCut, instantiatedCut.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);*/
+                Destroy(instantiatedImpact, instantiatedImpact.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
             }
         }
     }

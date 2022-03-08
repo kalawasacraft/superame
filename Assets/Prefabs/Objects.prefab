@@ -154,7 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa82689da6c943f8b8889e8e748da6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  speed: 2
   hitCutParticles: {fileID: 1624753189779215880, guid: 82877caa69b529a3e825860cb27cc78d, type: 3}
   hitSplashParticles: {fileID: 2411588047807027331, guid: b6ed6cab12dd73108b3b45bd35f54126, type: 3}
+  cutSound: {fileID: 8300000, guid: 476e880bc030daf539c2b671b97c661e, type: 3}
+  impactSound: {fileID: 8300000, guid: acfde2b95fbdb17358b35f145b648648, type: 3}
+  punchSound: {fileID: 8300000, guid: dc3ebe38f4dc450afa375e5dc2e67dc7, type: 3}
