@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 439128044}
     m_SelectOnDown: {fileID: 1670742025}
@@ -221,7 +221,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 48768563}
   m_OnClick:
     m_PersistentCalls:
@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 2129201193}
     m_SelectOnDown: {fileID: 1670742025}
@@ -387,7 +387,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 51970484}
   m_OnClick:
     m_PersistentCalls:
@@ -1386,7 +1386,7 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 717467043}
-    m_SelectOnDown: {fileID: 48768562}
+    m_SelectOnDown: {fileID: 1670742025}
     m_SelectOnLeft: {fileID: 172078278}
     m_SelectOnRight: {fileID: 2129201193}
   m_Transition: 3
@@ -4432,7 +4432,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -652730282552034232, guid: 374d0092abe12c305884e13c1e69b686, type: 3}
+  m_Sprite: {fileID: -492081936572593085, guid: 4d7b17430af0e4bb2ba8e792ecec0001, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4536,7 +4536,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bc70b3b95adffe0d39899e4670a3180b, type: 2}
   maps:
   - {fileID: 11400000, guid: 8c5c67fbb83851cb2865e1b5e014704a, type: 2}
-  - {fileID: 11400000, guid: 9682cd772728af2cab61aad30b1d7d36, type: 2}
 --- !u!114 &1409738013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5094,9 +5093,9 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 51970483}
+    m_SelectOnUp: {fileID: 2129201193}
     m_SelectOnDown: {fileID: 1682822646}
-    m_SelectOnLeft: {fileID: 51970483}
+    m_SelectOnLeft: {fileID: 2129201193}
     m_SelectOnRight: {fileID: 1682822646}
   m_Transition: 3
   m_Colors:
@@ -6876,9 +6875,9 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 172078278}
-    m_SelectOnDown: {fileID: 51970483}
+    m_SelectOnDown: {fileID: 1670742025}
     m_SelectOnLeft: {fileID: 439128044}
-    m_SelectOnRight: {fileID: 48768562}
+    m_SelectOnRight: {fileID: 1670742025}
   m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}

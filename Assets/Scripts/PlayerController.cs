@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
                 _airTime += Time.deltaTime;
             }
 
-            if (Input.GetButtonDown("Jump") && (_isGrounded || (!_isJumping && _airTime < 0.2f)) && !_isAttacking) {
+            if (Input.GetButtonDown("Jump") && (_isGrounded || (!_isJumping && _airTime < 0.15f)) && !_isAttacking) {
             //if (Input.GetButtonDown("Jump") && !_isJumping && (_isGrounded || _airTime < 0.25f) && !_isAttacking) {
                 _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
                 _rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
