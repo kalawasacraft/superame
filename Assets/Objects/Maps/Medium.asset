@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43ec48070fb527468c80089b0b96502, type: 3}
   m_Name: Medium
   m_EditorClassIdentifier: 
-  sprite: {fileID: -1433198874269190264, guid: ff17d91321d77435db4e7dc966be6afb, type: 3}
+  mapId: map02
+  sprite: {fileID: -8922806545422484088, guid: 293f4de6c0c688cce952e4b6a7a75a47, type: 3}
   positionBuildScene: 2
   goldLeafs: 11
   health: 3

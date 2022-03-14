@@ -29,6 +29,7 @@ public class SelectedPlayer : MonoBehaviour
     private void ChangePlayer()
     {
         PlayerPrefs.SetInt("playerIndex", _playerIndex);
+        PlayerPrefs.Save();
         _animatorCharacter.Play("Player"+_gameManager.players[_playerIndex].animationIndex.ToString());
     }
 

@@ -127,5 +127,26 @@ MonoBehaviour:
     m_Localized: Confirmar / Pausar
     m_Metadata:
       m_Items: []
+  - m_Id: 23925006804537344
+    m_Localized: Escribe tu apodo y SUPERAME si puedes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23925248518082560
+    m_Localized: "3 caracteres como m\xEDnimo, el primer caracter debe ser mayuscula
+      o minuscula."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23939014307696640
+    m_Localized: Ingrese su apodo...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24582394633080832
+    m_Localized: TIEMPO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24582630302633984
+    m_Localized: JUGADOR
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

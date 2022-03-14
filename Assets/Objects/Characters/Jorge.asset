@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3794ad34d2edca78fac8bfb5ef351c98, type: 3}
   m_Name: Jorge
   m_EditorClassIdentifier: 
+  playerId: 0
   player: {fileID: 1817544515903625219, guid: d9bd8ecb7509683d195f418313bab2d3, type: 3}
-  sprite: {fileID: 4680177295469869448, guid: 13d745a0347ca5929b084492b411cd16, type: 3}
+  face: {fileID: 352667614993179775, guid: 43ae90cd49426cd45a64cf26eda60a37, type: 3}
   animationIndex: 1

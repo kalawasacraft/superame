@@ -59,6 +59,11 @@ public class TimerController : MonoBehaviour
         return Instance.TimePlayed();
     }
 
+    public static float GetTimePlayedFloat()
+    {
+        return Instance._elapsedTime;
+    }
+
     private IEnumerator UpdateTimer()
     {
         while (_timerGoing) {

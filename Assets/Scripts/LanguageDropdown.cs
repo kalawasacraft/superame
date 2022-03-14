@@ -7,6 +7,8 @@ using UnityEngine.Localization.Settings;
 
 public class LanguageDropdown : MonoBehaviour
 {
+    public TMPro.TMP_Dropdown otherDropdown;
+
     private TMPro.TMP_Dropdown dropdown;
     private Dictionary<int, string> languagesIndex;
     private Dictionary<string, int> codesLanguageIndex;
@@ -30,14 +32,11 @@ public class LanguageDropdown : MonoBehaviour
         dropdown.value = codesLanguageIndex[LocalizationSettings.SelectedLocale.Identifier.Code];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void SetLanguage()
     {
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.GetLocale(languagesIndex[dropdown.value]);
+        if (otherDropdown != null) {
+            otherDropdown.value = codesLanguageIndex[LocalizationSettings.SelectedLocale.Identifier.Code];
+        }
     }
 }

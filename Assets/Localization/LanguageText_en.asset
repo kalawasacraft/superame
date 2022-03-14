@@ -127,5 +127,25 @@ MonoBehaviour:
     m_Localized: Confirm / Pause
     m_Metadata:
       m_Items: []
+  - m_Id: 23925006804537344
+    m_Localized: Write your nickname and SUPERAME if you can
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23925248518082560
+    m_Localized: 3 characters minimum, the first character must be uppercase or lowercase.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23939014307696640
+    m_Localized: Enter your nickname...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24582394633080832
+    m_Localized: TIME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24582630302633984
+    m_Localized: PLAYER
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

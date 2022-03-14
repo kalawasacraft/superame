@@ -14,7 +14,6 @@ public class HelpWindow : MonoBehaviour
     void Start()
     {
         if (GameManager.IsFirstOpenGame()) {
-            GameManager.SetIsFirstOpenGame(false);
             Help();
         }
     }
@@ -35,14 +34,18 @@ public class HelpWindow : MonoBehaviour
     {
         _isHelp = true;
         _windowHelp.SetActive(true);
-
-        EventSystem eventSystem = EventSystem.current;
-        eventSystem.SetSelectedGameObject(firstSelected, new BaseEventData(eventSystem));
+        
+        if (PlayerPrefs.HasKey(GameManager.GetNicknamePrefs())) {
+            EventSystem eventSystem = EventSystem.current;
+            eventSystem.SetSelectedGameObject(firstSelected, new BaseEventData(eventSystem));
+        }
     }
 
     public void Quit()
     {
         _isHelp = false;
+        GameManager.SetIsFirstOpenGame(false);
+
         Invoke("QuitAction", 0.2f);
     }
 

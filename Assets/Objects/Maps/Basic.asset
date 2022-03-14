@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43ec48070fb527468c80089b0b96502, type: 3}
   m_Name: Basic
   m_EditorClassIdentifier: 
+  mapId: map01
   sprite: {fileID: 21300000, guid: ffc03e2eb4b5119afa8e56ca5e4463a1, type: 3}
   positionBuildScene: 1
   goldLeafs: 7

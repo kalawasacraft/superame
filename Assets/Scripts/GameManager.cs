@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public List<Players> players;
     public List<Maps> maps;
 
+    private GameObject waitLoad;
+    private string _nicknamePrefs = "nickname";
     private bool _isFirstOpenGame = true;
     private bool _inputMovement;
     private int _currentLeafValue;
@@ -80,6 +82,28 @@ public class GameManager : MonoBehaviour
             Instance._gameInProgress = false;
             
             TimerController.EndTimer();
+
+            string playerName = PlayerPrefs.GetString(GetNicknamePrefs());
+            var newRecord = new Record(PlayerPrefs.GetInt("playerIndex"), TimerController.GetTimePlayedFloat());
+            string mapId = Instance.maps[PlayerPrefs.GetInt("mapIndex")].mapId;
+
+            DatabaseHandler.GetRecord(mapId, playerName, newRecord, record => {
+                
+                if (record.time > newRecord.time) {
+                    DatabaseHandler.PostRecord(newRecord, mapId, playerName, () => {
+
+                    });
+                }
+            });
+
+            DatabaseHandler.GetMap(mapId, map => {
+
+                var testMap = new Map(map.completed + 1);
+                DatabaseHandler.PatchMap(testMap, mapId, () => {
+
+                });
+            });
+
             StatesSoundController.CompletedPlay();
 
             UIManager.ShowMenuCompleted();
@@ -173,6 +197,21 @@ public class GameManager : MonoBehaviour
         }
         _isFullShield = false;
         yield return null;
+    }
+
+    public static string GetNicknamePrefs()
+    {
+        return Instance._nicknamePrefs;
+    }
+
+    public static void SetWaitLoad(GameObject objectLoad)
+    {
+        Instance.waitLoad = objectLoad;
+    }
+
+    public static void ShowWaitLoad(bool value)
+    {
+        Instance.waitLoad.SetActive(value);
     }
 
     public static int RandomNumber(int min, int max)

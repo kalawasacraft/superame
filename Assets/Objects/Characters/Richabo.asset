@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3794ad34d2edca78fac8bfb5ef351c98, type: 3}
   m_Name: Richabo
   m_EditorClassIdentifier: 
+  playerId: 1
   player: {fileID: 3817617104357784863, guid: b583c7b4f3356fa0db2c959ea20eb93a, type: 3}
+  face: {fileID: 6728078740956168734, guid: 43ae90cd49426cd45a64cf26eda60a37, type: 3}
   animationIndex: 2
