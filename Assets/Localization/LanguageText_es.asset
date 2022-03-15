@@ -148,5 +148,13 @@ MonoBehaviour:
     m_Localized: JUGADOR
     m_Metadata:
       m_Items: []
+  - m_Id: 24912635083706368
+    m_Localized: veces completado.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24981505110790144
+    m_Localized: "eres el n\xFAmero #1 entre los mortales."
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

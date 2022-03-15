@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Localization;
 using TMPro;
 
 public class MapStats : MonoBehaviour
@@ -11,9 +12,11 @@ public class MapStats : MonoBehaviour
     [SerializeField] private GameObject _mapButton;
     [SerializeField] private GameObject _mapStatsWindow;
     [SerializeField] private Image _imageMap;
+    [SerializeField] private TMPro.TMP_Text _counterMap;
     public GameObject firstSelected;
     public List<GameObject> rowsTopPlayers;
     
+    private LocalizedStringTable _stringTable = new LocalizedStringTable { TableReference = "LanguageText" };
     private GameManager _gameManager;
 
     void Start()
@@ -44,12 +47,18 @@ public class MapStats : MonoBehaviour
             SetRowTopPlayer(row, "---", "-", -1);
         }
 
+        DatabaseHandler.GetMap(mapId, map => {
+
+            _counterMap.SetText("~ " + map.completed.ToString() + " " +
+                _stringTable.GetTable().GetEntry("langCounterMap").GetLocalizedString());
+        });
+
         DatabaseHandler.GetTopRecords(mapId, rowsTopPlayers.Count, records => {
             
             List<List<string> > topPlayers = new List<List<string> > ();
 
             foreach (var record in records) {
-                topPlayers.Add(new List<string>() {record.Value.time.ToString("0.000"), record.Key, record.Value.playerId.ToString()});
+                topPlayers.Add(new List<string>() {record.Value.time.ToString("0.00"), record.Key, record.Value.playerId.ToString()});
             }
 
             topPlayers.Sort(delegate (List<string> x, List<string> y) {

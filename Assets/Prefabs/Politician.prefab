@@ -583,7 +583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 3
   _speed: 0.5
-  decreasedSeconds: 5
+  decreasedSeconds: 4
   healthBarEnemy: {fileID: 6321701070779849445}
   _messageSeconds: {fileID: 2704515599640197499}
   _groundSensor: {fileID: 8876174051138843650}

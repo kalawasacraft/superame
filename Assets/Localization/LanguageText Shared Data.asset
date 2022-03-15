@@ -143,6 +143,14 @@ MonoBehaviour:
     m_Key: langNicknamePlayer
     m_Metadata:
       m_Items: []
+  - m_Id: 24912635083706368
+    m_Key: langCounterMap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24981505110790144
+    m_Key: langMessageTopPlayer
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

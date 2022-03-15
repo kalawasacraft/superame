@@ -78,6 +78,11 @@ public class UIManager : MonoBehaviour
         Instance.GetComponent<MenuGameOver>().GameOver();
     }
 
+    public static void ShowTopPlayerPanel()
+    {
+        Instance.GetComponent<YouAreTopPlayer>().Show();
+    }
+
     private string getHealthString(int health)
     {
         return new string('O', health);

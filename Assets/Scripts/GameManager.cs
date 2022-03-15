@@ -67,6 +67,11 @@ public class GameManager : MonoBehaviour
         return Instance._currentHealthValue;
     }
 
+    public static int GetTotalHealth()
+    {
+        return Instance._currentMap.health;
+    }
+
     public static void RestoreHealth()
     {
         Instance._currentHealthValue = Instance._currentMap.health;
@@ -83,31 +88,58 @@ public class GameManager : MonoBehaviour
             
             TimerController.EndTimer();
 
-            string playerName = PlayerPrefs.GetString(GetNicknamePrefs());
-            var newRecord = new Record(PlayerPrefs.GetInt("playerIndex"), TimerController.GetTimePlayedFloat());
-            string mapId = Instance.maps[PlayerPrefs.GetInt("mapIndex")].mapId;
-
-            DatabaseHandler.GetRecord(mapId, playerName, newRecord, record => {
-                
-                if (record.time > newRecord.time) {
-                    DatabaseHandler.PostRecord(newRecord, mapId, playerName, () => {
-
-                    });
-                }
-            });
-
-            DatabaseHandler.GetMap(mapId, map => {
-
-                var testMap = new Map(map.completed + 1);
-                DatabaseHandler.PatchMap(testMap, mapId, () => {
-
-                });
-            });
+            Instance.SaveTimePlayed();
 
             StatesSoundController.CompletedPlay();
 
             UIManager.ShowMenuCompleted();
         }
+    }
+
+    private void SaveTimePlayed()
+    {
+        string playerName = PlayerPrefs.GetString(GetNicknamePrefs());
+        string mapId = Instance.maps[PlayerPrefs.GetInt("mapIndex")].mapId;
+        float myTimePlayed = TimerController.GetTimePlayedFloat();
+        var newRecord = new Record(PlayerPrefs.GetInt("playerIndex"), myTimePlayed);
+
+        GameManager.ShowWaitLoad(true);
+
+        DatabaseHandler.GetTopRecords(mapId, 1, records => {
+            
+            bool iAmTheBest = true;
+            if (records.Count == 1) {
+                var e = records.GetEnumerator();
+                e.MoveNext();
+                if (e.Current.Value.time <= myTimePlayed) {
+                    iAmTheBest = false;
+                }
+            }
+
+            if (iAmTheBest) {
+                UIManager.ShowTopPlayerPanel();
+            }
+
+            GameManager.ShowWaitLoad(false);
+
+            DatabaseHandler.GetRecord(mapId, playerName, newRecord, record => {
+                
+                if (record.time > newRecord.time) {
+                    DatabaseHandler.PostRecord(newRecord, mapId, playerName, () => { 
+                        //GameManager.ShowWaitLoad(false);
+                    });
+                } else {
+                    //GameManager.ShowWaitLoad(false);
+                }
+            });
+        
+        });
+
+        DatabaseHandler.GetMap(mapId, map => {
+
+            var testMap = new Map(map.completed + 1);
+            DatabaseHandler.PatchMap(testMap, mapId, () => { });
+        });
     }
 
     public static void PlayerDeath()
@@ -211,7 +243,9 @@ public class GameManager : MonoBehaviour
 
     public static void ShowWaitLoad(bool value)
     {
-        Instance.waitLoad.SetActive(value);
+        if (Instance.waitLoad != null) {
+            Instance.waitLoad.SetActive(value);
+        }
     }
 
     public static int RandomNumber(int min, int max)

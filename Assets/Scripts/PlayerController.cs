@@ -47,7 +47,11 @@ public class PlayerController : MonoBehaviour
     private float _airTime = 0f;
     private bool _isJumping = false;
 
+    // Others
     private bool _isDeath = false;
+    private int _currentHealth;
+    private float _colorDamageValue = 0.3f;
+    private float _colorAlterDamageValue = 0.25f;
 
     void Awake()
     {
@@ -174,12 +178,12 @@ public class PlayerController : MonoBehaviour
             hurtBox.GetComponent<AudioSource>().Play();
 
             GameManager.UpdateHealth((int)damage);
-            int health = GameManager.GetHealth();
+            _currentHealth = GameManager.GetHealth();
 
-            _sprite.color = new Color(1f, 0.5f, 0.5f, 1f);
+            _sprite.color = new Color(1f, _colorDamageValue, _colorDamageValue, 1f);
             Invoke("refreshColor", 0.3f);
             
-            if (health <= 0) {
+            if (_currentHealth <= 0) {
                 GameManager.PlayerDeath();
                 _isDeath = true;
                 _animator.SetTrigger("Death");
@@ -215,6 +219,9 @@ public class PlayerController : MonoBehaviour
         childEffect.transform.position = effectPoint.position;
         childEffect.SendMessageUpwards("SoundPlay");
         Destroy(childEffect, time);
+
+        _currentHealth = GameManager.GetHealth();
+        refreshColor();
     }
 
     public void AfterDeath()
@@ -224,7 +231,14 @@ public class PlayerController : MonoBehaviour
 
     public void refreshColor()
     {
-        _sprite.color = new Color(1f, 1f, 1f, 1f);
+        float colorVal = GetColorDamage();
+        _sprite.color = new Color(1f, Mathf.Min(1f, (1 - _colorAlterDamageValue) + colorVal), 
+                                    Mathf.Min(1f, (1 - _colorAlterDamageValue) + colorVal), 1f);
+    }
+
+    private float GetColorDamage()
+    {
+        return (_currentHealth * _colorAlterDamageValue) / ((float) GameManager.GetTotalHealth());
     }
 
     private void PlayerIsDeathEffect()

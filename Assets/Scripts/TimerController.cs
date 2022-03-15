@@ -30,7 +30,8 @@ public class TimerController : MonoBehaviour
     public static void RestartTimer()
     {
         Instance._timerGoing = false;
-        UIManager.UpdateTimeUI("00:00.00");
+        UIManager.UpdateTimeUI("00000.00");
+        //UIManager.UpdateTimeUI("00:00.00");
     }
 
     public static void BeginTimer()
@@ -56,28 +57,30 @@ public class TimerController : MonoBehaviour
 
     public static string GetTimePlayed()
     {
-        return Instance.TimePlayed();
+        return Instance._elapsedTime.ToString("0.00");
+        //return Instance.TimePlayed();
     }
 
     public static float GetTimePlayedFloat()
     {
-        return Instance._elapsedTime;
+        return float.Parse(GetTimePlayed());
     }
 
     private IEnumerator UpdateTimer()
     {
         while (_timerGoing) {
             _elapsedTime += Time.deltaTime;
-            _timePlaying = TimeSpan.FromSeconds(_elapsedTime);
+            //_timePlaying = TimeSpan.FromSeconds(_elapsedTime);
 
-            UIManager.UpdateTimeUI(TimePlayed());
+            //UIManager.UpdateTimeUI(TimePlayed());
+            UIManager.UpdateTimeUI(_elapsedTime.ToString("00000.00"));
 
             yield return null;
         }
     }
 
-    private string TimePlayed()
+    /*private string TimePlayed()
     {
         return _timePlaying.ToString("mm':'ss'.'ff");
-    }
+    }*/
 }

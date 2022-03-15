@@ -124,7 +124,7 @@ public class ThiefPatrol : MonoBehaviour
             if (_hitPoints <= 0) {
                 _isDeath = true;
                 _animator.SetTrigger("Death");
-                _messageSeconds.SetText("-" + decreasedSeconds.ToString() + ".00");
+                _messageSeconds.SetText("-" + decreasedSeconds.ToString("0.000"));
 
                 TimerController.DecreaseTime(decreasedSeconds);
                 Destroy(gameObject, 1.4f);

@@ -6,8 +6,11 @@ using Proyecto26;
 
 public static class DatabaseHandler
 {
+    private static bool inProduction = false; // false: testing,  true: production
     private const string projectId = "superame-c867e-default-rtdb";
     private static readonly string databaseURL = $"https://{projectId}.firebaseio.com/";
+    private static readonly string mapsTable = (inProduction ? "maps" : "test_maps");
+    private static readonly string recordsTable = (inProduction ? "records" : "test_records");
 
     private static fsSerializer serializer = new fsSerializer();
 
@@ -25,8 +28,12 @@ public static class DatabaseHandler
     /// <param name="callback"> What to do after the user is downloaded successfully </param>
     public static void GetMap(string mapId, GetMapCallback callback)
     {
-        RestClient.Get<Map>($"{databaseURL}maps/{mapId}.json").Then(map => { 
+        RestClient.Get<Map>($"{databaseURL}{mapsTable}/{mapId}.json").Then(map => { 
             callback(map);
+        }).Catch(err => {
+
+            GameManager.ShowWaitLoad(false);
+            Debug.Log(err);
         });
     }
 
@@ -36,7 +43,7 @@ public static class DatabaseHandler
     /// <param name="callback"> What to do after all users are downloaded successfully </param>
     public static void GetMaps(GetMapsCallback callback)
     {
-        RestClient.Get($"{databaseURL}maps.json").Then(response =>
+        RestClient.Get($"{databaseURL}{mapsTable}.json").Then(response =>
         {
             var responseJson = response.Text;
             
@@ -61,7 +68,7 @@ public static class DatabaseHandler
     /// <param name="callback"> What to do after all users are downloaded successfully </param>
     public static void GetTopRecords(string mapId, int limit, GetTopRecordsCallback callback)
     {
-        RestClient.Get($"{databaseURL}records/{mapId}.json?orderBy=\"time\"&limitToFirst={limit}").Then(response =>
+        RestClient.Get($"{databaseURL}{recordsTable}/{mapId}.json?orderBy=\"time\"&limitToFirst={limit}").Then(response =>
         {
             var responseJson = response.Text;
 
@@ -96,7 +103,7 @@ public static class DatabaseHandler
     
     /*public static void PostMap(Map map, string mapId, PostMapCallback callback)
     {
-        RestClient.Put<Map>($"{databaseURL}maps/{mapId}.json", map).Then(response => { 
+        RestClient.Put<Map>($"{databaseURL}{mapsTable}/{mapId}.json", map).Then(response => { 
             Debug.Log("The map was successfully uploaded to the database");
             callback(); 
         });
@@ -110,7 +117,7 @@ public static class DatabaseHandler
     /// <param name="callback"> What to do after the user is uploaded successfully </param>
     public static void PatchMap(Map map, string mapId, PostMapCallback callback)
     {      
-        RestClient.Patch<Map>($"{databaseURL}maps/{mapId}.json", map).Then(response => { 
+        RestClient.Patch<Map>($"{databaseURL}{mapsTable}/{mapId}.json", map).Then(response => { 
             Debug.Log("The map was successfully uploaded to the database");
             callback(); 
         });
@@ -127,10 +134,13 @@ public static class DatabaseHandler
     /// <param name="callback"> What to do after the user is uploaded successfully </param>
     public static void PostRecord(Record record, string mapId, string playerName, PostRecordCallback callback)
     {
-        //RestClient.Put<Record>($"{databaseURL}maps/{mapId}/records/{playerName}.json", record).Then(response => { 
-        RestClient.Put<Record>($"{databaseURL}records/{mapId}/{playerName}.json", record).Then(response => { 
+        RestClient.Put<Record>($"{databaseURL}{recordsTable}/{mapId}/{playerName}.json", record).Then(response => { 
             Debug.Log("The record was successfully uploaded to the database");
-            callback(); 
+            callback();
+        }).Catch(err => {
+
+            //GameManager.ShowWaitLoad(false);
+            Debug.Log(err);
         });
     }
 
@@ -142,8 +152,7 @@ public static class DatabaseHandler
     /// <param name="callback"> What to do after the user is downloaded successfully </param>
     public static void GetRecord(string mapId, string playerName, Record record, GetRecordCallback callback)
     {
-        //RestClient.Get<Record>($"{databaseURL}maps/{mapId}/records/{playerName}.json").Then(record => { 
-        RestClient.Get<Record>($"{databaseURL}records/{mapId}/{playerName}.json").Then(record => { 
+        RestClient.Get<Record>($"{databaseURL}{recordsTable}/{mapId}/{playerName}.json").Then(record => { 
             callback(record);
         }).Catch(err => {
 

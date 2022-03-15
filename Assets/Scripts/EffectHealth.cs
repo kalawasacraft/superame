@@ -17,9 +17,9 @@ public class EffectHealth : MonoBehaviour
     {
         if (collision.CompareTag("Contestant")) {
             _collider.enabled = false;
-
-            collision.SendMessageUpwards("InitEffectHealth", timeEffect);
+            
             GameManager.RestoreHealth();
+            collision.SendMessageUpwards("InitEffectHealth", timeEffect);
 
             Debug.Log("HEALTH!!!");
             Destroy(gameObject);

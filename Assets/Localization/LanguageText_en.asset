@@ -147,5 +147,13 @@ MonoBehaviour:
     m_Localized: PLAYER
     m_Metadata:
       m_Items: []
+  - m_Id: 24912635083706368
+    m_Localized: time(s) completed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24981505110790144
+    m_Localized: you are number #1 among mortals.
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
