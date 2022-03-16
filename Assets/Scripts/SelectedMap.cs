@@ -50,51 +50,7 @@ public class SelectedMap : MonoBehaviour
     }
 
     private void InitMap()
-    {
-        string mapId = _gameManager.maps[_mapIndex].mapId;
-        /*string playerName = "julitus";
-        var testRecord = new Record(1, 23.011f);
-
-        DatabaseHandler.GetRecord(mapId, playerName, testRecord, record => {
-            
-            if (record.time > testRecord.time) {
-                DatabaseHandler.PostRecord(testRecord, mapId, playerName, () => {
-
-                });
-            }
-        });
-
-        DatabaseHandler.GetMap(mapId, map => {
-
-            var testMap = new Map(map.completed + 1);
-            DatabaseHandler.PatchMap(testMap, mapId, () => {
-
-            });
-        });*/
-
-        /*DatabaseHandler.GetMaps(maps => {
-            Debug.Log("ok!!!!");
-            Debug.Log(maps.Count);
-            foreach (var map in maps)
-            {
-                Debug.Log($"{map.Key} {map.Value.completed}");
-            }
-        });*/
-
-        /*DatabaseHandler.GetTopRecords(mapId, 1, records => {
-            Debug.Log("ok!!!!");
-            Debug.Log(records.Count);
-            
-            // var e = records.GetEnumerator();
-            // e.MoveNext();
-            // Debug.Log(e.Current.Key);
-
-            foreach (var record in records)
-            {
-                Debug.Log($"{record.Key} {record.Value.playerId} {record.Value.time}");
-            }
-        });*/
-
+    {   
         SceneManager.LoadScene(_gameManager.maps[_mapIndex].positionBuildScene);
     }
 }
