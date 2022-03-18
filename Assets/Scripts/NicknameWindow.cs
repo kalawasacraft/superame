@@ -41,6 +41,14 @@ public class NicknameWindow : MonoBehaviour
         }
     }
 
+    public void EnterNickname()
+    {
+        if (_saveButton.interactable) {
+            EventSystem eventSystem = EventSystem.current;
+            eventSystem.SetSelectedGameObject(_saveButton.gameObject, new BaseEventData(eventSystem));
+        }
+    }
+
     public void Save()
     {
         Invoke("SaveAction", 0.2f);

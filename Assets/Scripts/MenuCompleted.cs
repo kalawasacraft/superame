@@ -39,6 +39,8 @@ public class MenuCompleted : MonoBehaviour
 
         EventSystem eventSystem = EventSystem.current;
         eventSystem.SetSelectedGameObject(firstSelected, new BaseEventData(eventSystem));
+
+        SoundsManager.SetVolumeAtmosphere(0.3f);
     }
 
     public void Restart()

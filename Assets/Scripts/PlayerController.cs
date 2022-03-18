@@ -85,14 +85,19 @@ public class PlayerController : MonoBehaviour
             _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
             if (_isGrounded) {
+                if (_isJumping && _airTime >= 0.15f) {
+                    _isJumping = false;   
+                }
                 _airTime = 0f;
-                _isJumping = false;
             } else {
                 _airTime += Time.deltaTime;
             }
 
-            if (Input.GetButtonDown("Jump") && (_isGrounded || (!_isJumping && _airTime < 0.15f)) && !_isAttacking) {
-            //if (Input.GetButtonDown("Jump") && !_isJumping && (_isGrounded || _airTime < 0.25f) && !_isAttacking) {
+            //
+
+            if (Input.GetButtonDown("Jump") && !_isAttacking &&
+                (_isGrounded || (!_isJumping && _airTime < 0.15f))) {
+                
                 _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
                 _rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 _isJumping = true;

@@ -125,11 +125,7 @@ public class GameManager : MonoBehaviour
             DatabaseHandler.GetRecord(mapId, playerName, newRecord, record => {
                 
                 if (record.time > newRecord.time) {
-                    DatabaseHandler.PostRecord(newRecord, mapId, playerName, () => { 
-                        //GameManager.ShowWaitLoad(false);
-                    });
-                } else {
-                    //GameManager.ShowWaitLoad(false);
+                    DatabaseHandler.PostRecord(newRecord, mapId, playerName, () => { });
                 }
             });
         

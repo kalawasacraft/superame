@@ -56,6 +56,8 @@ public class MenuPause : MonoBehaviour
 
         EventSystem eventSystem = EventSystem.current;
         eventSystem.SetSelectedGameObject(firstSelected, new BaseEventData(eventSystem));
+
+        SoundsManager.SetVolumeAtmosphere(0.3f);
     }
 
     public void Resume()
@@ -71,6 +73,8 @@ public class MenuPause : MonoBehaviour
 
         _buttonPause.SetActive(true);
         _menuPause.SetActive(false);
+
+        SoundsManager.SetVolumeAtmosphere(0.8f);
     }
 
     public void Restart()
