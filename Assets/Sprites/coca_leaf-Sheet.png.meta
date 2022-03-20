@@ -39,6 +39,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -244,6 +245,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      coca_leaf-Sheet_1: -6680428374580660859
+      coca_leaf-Sheet_0: 4860742403813980356
+      coca_leaf-Sheet_3: -5318268294451923400
+      coca_leaf-Sheet_2: -4185638256086737245
+      coca_leaf-Sheet_4: 4944409882131676542
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

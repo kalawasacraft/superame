@@ -111,6 +111,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -820,6 +821,36 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      choro-Sheet_13: -8109566959997921592
+      choro-Sheet_24: -8240834427131328866
+      choro-Sheet_19: 3702381970067315514
+      choro-Sheet_21: 3324600849498716603
+      choro-Sheet_22: -8226208366283427908
+      choro-Sheet_27: -6176547559729317285
+      choro-Sheet_28: 1648001394759454486
+      choro-Sheet_12: -4566209088478673096
+      choro-Sheet_3: 6797654126791226494
+      choro-Sheet_15: 1610555206271693738
+      choro-Sheet_6: 3541989417395489345
+      choro-Sheet_2: -1034290459691285532
+      choro-Sheet_16: -676256289196221407
+      choro-Sheet_26: -1818397527207709127
+      choro-Sheet_0: -979542863924918258
+      choro-Sheet_20: -7983015001549211992
+      choro-Sheet_17: 8530934871858589633
+      choro-Sheet_9: 7506215204881920008
+      choro-Sheet_18: -7630147854804320802
+      choro-Sheet_4: -7772374063139276755
+      choro-Sheet_7: 3468346914465885424
+      choro-Sheet_25: 2237771384537224334
+      choro-Sheet_23: 2023773301136482466
+      choro-Sheet_8: -1944839888371441142
+      choro-Sheet_10: 6423071765066691884
+      choro-Sheet_11: -665440491145010484
+      choro-Sheet_1: 6894627962966602157
+      choro-Sheet_14: -1373306745831601335
+      choro-Sheet_5: 7794715540358987474
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

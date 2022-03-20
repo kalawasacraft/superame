@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         UIManager.UpdateHealthUI(Instance._currentMap.health);
         UIManager.UpdateLeafTopUI(Instance._currentMap.goldLeafs);
         UIManager.UpdateLeafUI(Instance._currentLeafValue);
+        UIManager.InitNotification();
     }
 
     public static void RestartGame()
@@ -117,7 +118,7 @@ public class GameManager : MonoBehaviour
             }
 
             if (iAmTheBest) {
-                UIManager.ShowTopPlayerPanel();
+                UIManager.ShowNotificationTopPlayer();
             }
 
             GameManager.ShowWaitLoad(false);

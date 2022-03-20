@@ -63,6 +63,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -436,6 +437,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      ricardo_mendoza-Sheet_attack_9: 6175612697970128773
+      ricardo_mendoza-Sheet_attack_0: 3272342329455851136
+      ricardo_mendoza-Sheet_attack_4: -5304608891565539183
+      ricardo_mendoza-Sheet_attack_1: -2723264894547708179
+      ricardo_mendoza-Sheet_attack_2: 916167171092205205
+      ricardo_mendoza-Sheet_attack_6: 2394006725808713037
+      ricardo_mendoza-Sheet_attack_10: 2524357544794853233
+      ricardo_mendoza-Sheet_attack_8: -8266771996621918840
+      ricardo_mendoza-Sheet_attack_11: -3986958082959545450
+      ricardo_mendoza-Sheet_attack_12: 4072155590563196811
+      ricardo_mendoza-Sheet_attack_3: 2110071828371411589
+      ricardo_mendoza-Sheet_attack_7: 2035967257873287119
+      ricardo_mendoza-Sheet_attack_5: -358579886067726450
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

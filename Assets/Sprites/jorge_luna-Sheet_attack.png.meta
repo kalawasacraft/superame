@@ -63,6 +63,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -436,6 +437,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      jorge_luna-Sheet_attack_11: 4539332805399316829
+      jorge_luna-Sheet_attack_9: 2937530394052176975
+      jorge_luna-Sheet_attack_1: -2365020521807266205
+      jorge_luna-Sheet_attack_5: 7964628189428804229
+      jorge_luna-Sheet_attack_4: -5153589708267423675
+      jorge_luna-Sheet_attack_2: -3199310313034991305
+      jorge_luna-Sheet_attack_10: -5877619261597312576
+      jorge_luna-Sheet_attack_6: -4686322742212235575
+      jorge_luna-Sheet_attack_12: 4795020706453181644
+      jorge_luna-Sheet_attack_7: 5666157961407523649
+      jorge_luna-Sheet_attack_0: 2343461433954686361
+      jorge_luna-Sheet_attack_3: 7911828195832359869
+      jorge_luna-Sheet_attack_8: 2586378294932154730
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -152,8 +152,21 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 24981505110790144
-    m_Localized: you are number #1 among mortals.
+    m_Localized: You are number #1 among mortals.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26445667385036800
+    m_Localized: You must make a better time and overcome
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26446879178182656
+    m_Localized: anyone :)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26474945686360064
+    m_Localized: An object appeared
     m_Metadata:
       m_Items: []
   references:
-    version: 1
+    version: 2
+    RefIds: []

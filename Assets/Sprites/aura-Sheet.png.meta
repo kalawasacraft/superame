@@ -69,6 +69,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -484,6 +485,22 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      aura-Sheet_13: -4320301263059125148
+      aura-Sheet_7: 3972715768524121043
+      aura-Sheet_3: -4925357091736315719
+      aura-Sheet_0: 566883630467281216
+      aura-Sheet_14: -4611021216792360515
+      aura-Sheet_10: 6513114112801384799
+      aura-Sheet_2: -7502344517824477503
+      aura-Sheet_1: -2221872164253861957
+      aura-Sheet_6: -489033129961327871
+      aura-Sheet_8: -4241101559721605965
+      aura-Sheet_9: 3647249923310807380
+      aura-Sheet_11: -4926372627540099599
+      aura-Sheet_4: 6702579026668238195
+      aura-Sheet_5: 3577469657707648475
+      aura-Sheet_12: 714523601803590889
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
