@@ -9,6 +9,7 @@ public class SoundsManager : MonoBehaviour
     public AudioClip confirm;
     public AudioClip back;
     public AudioClip error;
+    //public AudioSource audioAtmosphere;
 
     private AudioSource _audio;
 
@@ -40,6 +41,11 @@ public class SoundsManager : MonoBehaviour
     {
         Instance._audio.clip = Instance.back;
         Instance.PlayAudio();
+    }
+
+    public static void SetVolumeAtmosphere(float volume)
+    {
+        GameObject.Find("Atmosphere").GetComponent<AudioSource>().volume = volume;
     }
 
     private void PlayAudio()

@@ -9,7 +9,6 @@ public class MenuGameOver : MonoBehaviour
 {
     [SerializeField] private GameObject _buttonPause;
     [SerializeField] private GameObject _menuGameOver;
-    [SerializeField] private TMPro.TMP_Text _message;
     public GameObject firstSelected;
 
     private LocalizedStringTable _stringTable = new LocalizedStringTable { TableReference = "LanguageText" };
@@ -28,7 +27,7 @@ public class MenuGameOver : MonoBehaviour
 
     public void GameOver()
     {
-        _message.SetText(
+        UIManager.ShowNotificationGameOver(
             _stringTable.GetTable().GetEntry("langMsgDefeated_" + GameManager.RandomNumber(0, 3).ToString()).GetLocalizedString());
         
         Time.timeScale = 0f;
@@ -37,6 +36,8 @@ public class MenuGameOver : MonoBehaviour
 
         EventSystem eventSystem = EventSystem.current;
         eventSystem.SetSelectedGameObject(firstSelected, new BaseEventData(eventSystem));
+
+        SoundsManager.SetVolumeAtmosphere(0.3f);
     }
 
     public void Restart()

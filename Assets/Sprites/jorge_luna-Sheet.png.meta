@@ -189,6 +189,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1444,6 +1445,62 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      jorge_luna-Sheet_42: -5307897671268145630
+      jorge_luna-Sheet_23: 7628434240795200324
+      jorge_luna-Sheet_21: 5251442145481565674
+      jorge_luna-Sheet_37: -799626686731864460
+      jorge_luna-Sheet_49: -7842268028166713236
+      jorge_luna-Sheet_25: 1945527895340888221
+      jorge_luna-Sheet_27: 3504117007666534055
+      jorge_luna-Sheet_50: -8197193642613491501
+      jorge_luna-Sheet_44: 4760281530562278679
+      jorge_luna-Sheet_54: -3968222266485362769
+      jorge_luna-Sheet_3: 2901085013454180120
+      jorge_luna-Sheet_17: -7769123753044927999
+      jorge_luna-Sheet_14: -1379706734037699220
+      jorge_luna-Sheet_35: 8283965697372556782
+      jorge_luna-Sheet_40: -7513571989456026769
+      jorge_luna-Sheet_38: 5344273595564451453
+      jorge_luna-Sheet_1: 2058712902913838665
+      jorge_luna-Sheet_24: -2523251028725583637
+      jorge_luna-Sheet_31: 4397056755047331658
+      jorge_luna-Sheet_43: 8196405914718807832
+      jorge_luna-Sheet_6: -7993863927043442295
+      jorge_luna-Sheet_19: 8199927171338881975
+      jorge_luna-Sheet_5: 4451041025097568732
+      jorge_luna-Sheet_13: -6033560825701705599
+      jorge_luna-Sheet_8: -4654770795280329017
+      jorge_luna-Sheet_41: -1007620849340893180
+      jorge_luna-Sheet_16: 7261039659341226185
+      jorge_luna-Sheet_39: 528818348434025430
+      jorge_luna-Sheet_20: 7092029198165749459
+      jorge_luna-Sheet_47: -3499169595945225627
+      jorge_luna-Sheet_10: 1208153651483636278
+      jorge_luna-Sheet_9: 1448174220338952843
+      jorge_luna-Sheet_15: -6973999210122755748
+      jorge_luna-Sheet_18: -8136586270029214547
+      jorge_luna-Sheet_46: -3941561372054350297
+      jorge_luna-Sheet_26: -51380512866009261
+      jorge_luna-Sheet_53: -3008454716959411906
+      jorge_luna-Sheet_29: 3841756031981538493
+      jorge_luna-Sheet_28: -4770125154262440918
+      jorge_luna-Sheet_7: -2705410374735906863
+      jorge_luna-Sheet_12: 1928193417078686200
+      jorge_luna-Sheet_34: 7477554695843140697
+      jorge_luna-Sheet_48: 5122439152835280020
+      jorge_luna-Sheet_52: -774035998146883912
+      jorge_luna-Sheet_32: -2755789298155908280
+      jorge_luna-Sheet_22: 4795727221497306295
+      jorge_luna-Sheet_4: 6999075505609052187
+      jorge_luna-Sheet_11: -1621165017511100839
+      jorge_luna-Sheet_36: -1277316781389651806
+      jorge_luna-Sheet_2: 3947165701464111224
+      jorge_luna-Sheet_33: 1182747669320396456
+      jorge_luna-Sheet_45: 7835512871654850414
+      jorge_luna-Sheet_0: 4680177295469869448
+      jorge_luna-Sheet_51: -8508053561582306598
+      jorge_luna-Sheet_30: 135389374086108021
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

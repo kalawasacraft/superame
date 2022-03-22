@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class HelpWindow : MonoBehaviour
 {
     [SerializeField] private GameObject _helpButton;
     [SerializeField] private GameObject _windowHelp;
+    [SerializeField] private TMP_Text _versionText;
     public GameObject firstSelected;
 
     private bool _isHelp = false;
@@ -16,18 +18,19 @@ public class HelpWindow : MonoBehaviour
         if (GameManager.IsFirstOpenGame()) {
             Help();
         }
+        _versionText.SetText(Application.version);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        /*if (Input.GetKeyDown(KeyCode.Escape)) {
             if (_isHelp) {
                 Quit();
             } else {
                 Help();
             }
-        }
+        }*/
     }
 
     public void Help()

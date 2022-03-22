@@ -111,6 +111,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -820,6 +821,36 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      politico-Sheet_19: 8402408238459639768
+      politico-Sheet_2: -7495083374044544627
+      politico-Sheet_10: -2245546775093935727
+      politico-Sheet_5: 3103986491870885427
+      politico-Sheet_20: 241922389775296550
+      politico-Sheet_27: 4006564975660642816
+      politico-Sheet_23: 1012730410848482352
+      politico-Sheet_16: -2679305073125909432
+      politico-Sheet_28: -1991480841193768219
+      politico-Sheet_15: 8141807808046122239
+      politico-Sheet_8: 6858593036181403076
+      politico-Sheet_24: 5567320574704525264
+      politico-Sheet_4: 208567358101516996
+      politico-Sheet_12: -8901407213865756129
+      politico-Sheet_18: -5294842614473342202
+      politico-Sheet_11: -4210057701094030035
+      politico-Sheet_13: -6654711153726240156
+      politico-Sheet_14: 1284800325762449028
+      politico-Sheet_3: 7366410771437535656
+      politico-Sheet_26: 421189316476790306
+      politico-Sheet_6: 8063652680437462780
+      politico-Sheet_22: -4953281498155479229
+      politico-Sheet_25: 1879978611618249104
+      politico-Sheet_0: -3238733186661080919
+      politico-Sheet_17: -8495637586419674142
+      politico-Sheet_9: -4491573987481843045
+      politico-Sheet_7: -9115949986760309072
+      politico-Sheet_1: 191964501060337610
+      politico-Sheet_21: 2134879924020815089
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

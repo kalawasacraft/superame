@@ -9,7 +9,6 @@ public class MenuPause : MonoBehaviour
 {
     [SerializeField] private GameObject _buttonPause;
     [SerializeField] private GameObject _menuPause;
-    [SerializeField] private TMPro.TMP_Text _message;
     public GameObject firstSelected;
 
     private LocalizedStringTable _stringTable = new LocalizedStringTable { TableReference = "LanguageText" };
@@ -49,18 +48,22 @@ public class MenuPause : MonoBehaviour
         _isPaused = true;
         GameManager.SetGameIsPaused(_isPaused);
 
-        _message.SetText(
+        UIManager.ShowNotificationPause(
             _stringTable.GetTable().GetEntry("langMsgPause_" + GameManager.RandomNumber(0, 3).ToString()).GetLocalizedString());
+
         _buttonPause.SetActive(false);
         _menuPause.SetActive(true);
 
         EventSystem eventSystem = EventSystem.current;
         eventSystem.SetSelectedGameObject(firstSelected, new BaseEventData(eventSystem));
+
+        SoundsManager.SetVolumeAtmosphere(0.3f);
     }
 
     public void Resume()
     {
         Time.timeScale = 1f;
+        UIManager.ShowNotificationDefault();
         Invoke("ResumeAction", 0.1f);
     }
 
@@ -71,6 +74,8 @@ public class MenuPause : MonoBehaviour
 
         _buttonPause.SetActive(true);
         _menuPause.SetActive(false);
+
+        SoundsManager.SetVolumeAtmosphere(0.8f);
     }
 
     public void Restart()

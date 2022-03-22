@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class InitSuperame : MonoBehaviour
 {
     public Image panelTransition;
+    public GameObject startMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,8 @@ public class InitSuperame : MonoBehaviour
         Color startColor = new Color(0f, 0f, 0f, 0f);
         Color endColor = new Color(0f, 0f, 0f, 1f);
 
+        startMenu.SetActive(false);
+
         for (float t = 0f; t < duration; t += Time.deltaTime) {
 
             if (t > duration - startTransition) {
@@ -35,6 +38,8 @@ public class InitSuperame : MonoBehaviour
             }
             yield return null;
         }
+
+        startMenu.SetActive(true);
 
         FinishInit();
     }

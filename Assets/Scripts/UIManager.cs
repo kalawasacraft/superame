@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     public static void EnabledPause(bool value)
@@ -78,9 +78,39 @@ public class UIManager : MonoBehaviour
         Instance.GetComponent<MenuGameOver>().GameOver();
     }
 
-    public static void ShowTopPlayerPanel()
+    public static void InitNotification()
     {
-        Instance.GetComponent<YouAreTopPlayer>().Show();
+        Instance.GetComponent<Notifications>().Init();
+    }
+
+    public static void ShowNotificationPause(string message)
+    {
+        Instance.GetComponent<Notifications>().ShowNotificationPause(message);
+    }
+
+    public static void ShowNotificationGameOver(string message)
+    {
+        Instance.GetComponent<Notifications>().ShowNotificationGameOver(message);
+    }
+
+    public static void ShowNotificationCompleted(string message)
+    {
+        Instance.GetComponent<Notifications>().ShowNotificationCompleted(message);
+    }
+
+    public static void ShowNotificationTopPlayer()
+    {
+        Instance.GetComponent<Notifications>().ShowNotificationTopPlayer();
+    }
+
+    public static void ShowNotificationDefault()
+    {
+        Instance.GetComponent<Notifications>().ShowNotificationDefault();
+    }
+
+    public static void ShowAlertInNotification(string message)
+    {
+        Instance.GetComponent<Notifications>().ShowNotificationAlert(message);
     }
 
     private string getHealthString(int health)

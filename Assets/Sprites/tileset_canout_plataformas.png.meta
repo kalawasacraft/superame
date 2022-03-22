@@ -78,6 +78,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -556,6 +557,25 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      tileset_canout_plataformas_6: 1932460155102300430
+      tileset_canout_plataformas_15: 3886939775724935001
+      tileset_canout_plataformas_7: 3266422950138932766
+      tileset_canout_plataformas_8: 5703094938960516927
+      tileset_canout_plataformas_14: 8517490379119231368
+      tileset_canout_plataformas_0: 2486381199383925494
+      tileset_canout_plataformas_5: 7527557232198932619
+      tileset_canout_plataformas_17: 2684268182749673968
+      tileset_canout_plataformas_1: 2802775735802792125
+      tileset_canout_plataformas_2: 866197818659877890
+      tileset_canout_plataformas_9: 8918657523849186851
+      tileset_canout_plataformas_12: -8604263580183684912
+      tileset_canout_plataformas_13: 4189013804660060953
+      tileset_canout_plataformas_4: 8628840748213337732
+      tileset_canout_plataformas_3: -5927100214407712716
+      tileset_canout_plataformas_16: 585889017255321389
+      tileset_canout_plataformas_11: -7882122575314176316
+      tileset_canout_plataformas_10: -1165346367813732356
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

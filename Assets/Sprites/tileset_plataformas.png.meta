@@ -186,6 +186,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1420,6 +1421,61 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      tileset_plataformas_33: 7074109679355068744
+      tileset_plataformas_53: -4696318581996423800
+      tileset_plataformas_23: -8410606825618125537
+      tileset_plataformas_42: -305488456563813873
+      tileset_plataformas_37: 7935104630217871445
+      tileset_plataformas_16: -348002796044705534
+      tileset_plataformas_9: -2571850058676300832
+      tileset_plataformas_50: 552763316058808436
+      tileset_plataformas_21: 8794794469407540355
+      tileset_plataformas_3: 1208381100252947185
+      tileset_plataformas_24: -2816878281641060014
+      tileset_plataformas_38: 5815157699954167910
+      tileset_plataformas_40: 8062980017456830966
+      tileset_plataformas_4: 5914839256322051341
+      tileset_plataformas_32: 4075670118332216743
+      tileset_plataformas_36: 221655632473702113
+      tileset_plataformas_15: 8404996144581541302
+      tileset_plataformas_26: -7996577871342876396
+      tileset_plataformas_0: -652730282552034232
+      tileset_plataformas_30: -6620723229158911088
+      tileset_plataformas_43: 6375761255528781224
+      tileset_plataformas_51: 8613376475568873169
+      tileset_plataformas_19: -2775365243933903262
+      tileset_plataformas_6: -5717039173336195871
+      tileset_plataformas_44: -2581420069028888823
+      tileset_plataformas_8: 1585628630134942944
+      tileset_plataformas_2: -7669721844958070068
+      tileset_plataformas_10: -6201997304213261920
+      tileset_plataformas_45: 2815335013101035589
+      tileset_plataformas_25: -8098947250418460294
+      tileset_plataformas_46: -7134246299102573900
+      tileset_plataformas_12: 6306242819415767508
+      tileset_plataformas_14: 3510234070062718998
+      tileset_plataformas_29: -7243372385738448342
+      tileset_plataformas_34: 317328950365567430
+      tileset_plataformas_35: 5326764167853608827
+      tileset_plataformas_5: 6480167472876960415
+      tileset_plataformas_39: -8517102625978149362
+      tileset_plataformas_11: 4903596707315478079
+      tileset_plataformas_13: -652874058333078778
+      tileset_plataformas_17: 324897019179909398
+      tileset_plataformas_48: 4159460205969455300
+      tileset_plataformas_1: 6329900155390885624
+      tileset_plataformas_18: 4314455899617055080
+      tileset_plataformas_49: 2301452209438838482
+      tileset_plataformas_22: 5807155647039551189
+      tileset_plataformas_41: 3015590647044152438
+      tileset_plataformas_28: -824960082851957608
+      tileset_plataformas_7: 2693976141628273155
+      tileset_plataformas_31: -5686873022115338131
+      tileset_plataformas_47: -6995542398016223983
+      tileset_plataformas_20: 2075534267260471438
+      tileset_plataformas_52: -611780518327303289
+      tileset_plataformas_27: 1201515213031184732
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

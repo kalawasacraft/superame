@@ -153,8 +153,21 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 24981505110790144
-    m_Localized: "eres el n\xFAmero #1 entre los mortales."
+    m_Localized: "Eres el n\xFAmero #1 entre los mortales."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26445667385036800
+    m_Localized: Haz un mejor tiempo y supera a
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26446879178182656
+    m_Localized: nadie :)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26474945686360064
+    m_Localized: "Apareci\xF3 un objeto"
     m_Metadata:
       m_Items: []
   references:
-    version: 1
+    version: 2
+    RefIds: []

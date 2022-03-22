@@ -162,6 +162,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1228,6 +1229,53 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      ricardo_mendoza-Sheet_0: 5999798327577679256
+      ricardo_mendoza-Sheet_38: -3393650881744370694
+      ricardo_mendoza-Sheet_8: -8710953235066436636
+      ricardo_mendoza-Sheet_11: 7249337825548861359
+      ricardo_mendoza-Sheet_37: -7893067890451823582
+      ricardo_mendoza-Sheet_43: -5201433937457727743
+      ricardo_mendoza-Sheet_15: 2337413948747845383
+      ricardo_mendoza-Sheet_33: -448010241284010894
+      ricardo_mendoza-Sheet_7: -5430998849885816014
+      ricardo_mendoza-Sheet_22: -4761014776705820213
+      ricardo_mendoza-Sheet_24: -3507721409159939926
+      ricardo_mendoza-Sheet_23: 9032742020182985491
+      ricardo_mendoza-Sheet_17: -7586285374345566800
+      ricardo_mendoza-Sheet_35: 7579359582210098429
+      ricardo_mendoza-Sheet_16: 204517589153536850
+      ricardo_mendoza-Sheet_4: 7144459794921951981
+      ricardo_mendoza-Sheet_5: -5452125708230502152
+      ricardo_mendoza-Sheet_28: 2785273910335309100
+      ricardo_mendoza-Sheet_44: 1668412886973074567
+      ricardo_mendoza-Sheet_32: 3680274847704864628
+      ricardo_mendoza-Sheet_41: 4147901642876964768
+      ricardo_mendoza-Sheet_9: 3416695531901258763
+      ricardo_mendoza-Sheet_36: -6697597642267315071
+      ricardo_mendoza-Sheet_39: 338572723215935171
+      ricardo_mendoza-Sheet_21: 3375615652560339327
+      ricardo_mendoza-Sheet_27: -4110148449635472463
+      ricardo_mendoza-Sheet_30: 2700222513625791736
+      ricardo_mendoza-Sheet_31: 2553798388327009353
+      ricardo_mendoza-Sheet_25: 5417838092946959329
+      ricardo_mendoza-Sheet_20: 7117105614717022485
+      ricardo_mendoza-Sheet_40: 5975032976832980532
+      ricardo_mendoza-Sheet_45: 838296915057624156
+      ricardo_mendoza-Sheet_12: -1921658918003802012
+      ricardo_mendoza-Sheet_2: -7944712796764510087
+      ricardo_mendoza-Sheet_6: 8670747137478453748
+      ricardo_mendoza-Sheet_34: 8229969603914996813
+      ricardo_mendoza-Sheet_3: -5203313859700429818
+      ricardo_mendoza-Sheet_10: -775336371258049630
+      ricardo_mendoza-Sheet_19: 2032470609602737970
+      ricardo_mendoza-Sheet_1: -2467248642494071816
+      ricardo_mendoza-Sheet_13: 6240270057758857770
+      ricardo_mendoza-Sheet_14: 1854464852150815350
+      ricardo_mendoza-Sheet_18: -5191130995578796528
+      ricardo_mendoza-Sheet_29: -8645709690970872564
+      ricardo_mendoza-Sheet_26: 820060277283625550
+      ricardo_mendoza-Sheet_42: 2102322478202275653
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

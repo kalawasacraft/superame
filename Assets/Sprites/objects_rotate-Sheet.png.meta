@@ -96,6 +96,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -700,6 +701,31 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      objects_rotate-Sheet_16: 6765782676648628738
+      objects_rotate-Sheet_12: -3574010786496820319
+      objects_rotate-Sheet_9: -2421755918721051838
+      objects_rotate-Sheet_3: 1722497902580473754
+      objects_rotate-Sheet_8: 3695102631089810406
+      objects_rotate-Sheet_13: -963398343260254750
+      objects_rotate-Sheet_18: -1979858103292243963
+      objects_rotate-Sheet_22: -7648661138528946316
+      objects_rotate-Sheet_23: 8915452206716018806
+      objects_rotate-Sheet_10: -3582765873577356150
+      objects_rotate-Sheet_21: -3466514508756305876
+      objects_rotate-Sheet_4: 3723803031346097275
+      objects_rotate-Sheet_17: 7388782447698082286
+      objects_rotate-Sheet_11: 1722707433976641134
+      objects_rotate-Sheet_0: -2420344320946366702
+      objects_rotate-Sheet_14: 1940258769496007455
+      objects_rotate-Sheet_2: -7915307168751785793
+      objects_rotate-Sheet_20: -4441117388875597451
+      objects_rotate-Sheet_1: -8904311834200223564
+      objects_rotate-Sheet_15: -16491351015458117
+      objects_rotate-Sheet_19: -7930339758872616012
+      objects_rotate-Sheet_6: 3168735969530959883
+      objects_rotate-Sheet_7: -6764710262517539152
+      objects_rotate-Sheet_5: -6529127974750753521
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -151,13 +151,26 @@ MonoBehaviour:
     m_Key: langMessageTopPlayer
     m_Metadata:
       m_Items: []
+  - m_Id: 26445667385036800
+    m_Key: langMessageDefaultPlayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26446879178182656
+    m_Key: langAnyone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26474945686360064
+    m_Key: langMessageObjectAppeared
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    id: 0
+    rid: 0
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
         m_CustomEpoch: 1641421261533

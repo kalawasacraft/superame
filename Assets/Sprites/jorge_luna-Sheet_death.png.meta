@@ -39,6 +39,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -244,6 +245,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      jorge_luna-Sheet_death_3: 5479320166191415659
+      jorge_luna-Sheet_death_1: -8145003958304992759
+      jorge_luna-Sheet_death_2: -6927248141596125151
+      jorge_luna-Sheet_death_0: 8848566175775461343
+      jorge_luna-Sheet_death_4: 3214832918741411738
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -108,6 +108,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -796,6 +797,35 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      tileset_kiosko_12: 8519240664189911557
+      tileset_kiosko_25: 69243470479906107
+      tileset_kiosko_0: -5198926128996024915
+      tileset_kiosko_13: -492081936572593085
+      tileset_kiosko_14: -4389467417580969174
+      tileset_kiosko_8: 3706287854820928486
+      tileset_kiosko_2: -3248388054279741541
+      tileset_kiosko_19: -6264658251059991220
+      tileset_kiosko_26: 2624012924944047028
+      tileset_kiosko_27: 9072256025575922005
+      tileset_kiosko_3: -2387234689060285694
+      tileset_kiosko_24: 5133120567422898326
+      tileset_kiosko_9: 4604001040944574036
+      tileset_kiosko_20: -3429931845567644193
+      tileset_kiosko_22: -938299315323969766
+      tileset_kiosko_1: 2466493645107461920
+      tileset_kiosko_4: 6638266789668053446
+      tileset_kiosko_11: 9072385173904865499
+      tileset_kiosko_10: -3114452655644905208
+      tileset_kiosko_6: -4694872080020493845
+      tileset_kiosko_15: 2700347125489596937
+      tileset_kiosko_7: -2827153734083622438
+      tileset_kiosko_5: 6244562117095307328
+      tileset_kiosko_17: 8473806837952978025
+      tileset_kiosko_23: 7835482278750214849
+      tileset_kiosko_21: 2566040237912777096
+      tileset_kiosko_16: 3073614288207844089
+      tileset_kiosko_18: 6753395900070247725
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

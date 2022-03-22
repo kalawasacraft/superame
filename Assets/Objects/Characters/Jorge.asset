@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3794ad34d2edca78fac8bfb5ef351c98, type: 3}
   m_Name: Jorge
   m_EditorClassIdentifier: 
-  playerId: 0
   player: {fileID: 1817544515903625219, guid: d9bd8ecb7509683d195f418313bab2d3, type: 3}
   face: {fileID: 352667614993179775, guid: 43ae90cd49426cd45a64cf26eda60a37, type: 3}
   animationIndex: 1
+  statusFaces:
+  - {fileID: 1653026268, guid: e4051399b05b59af28f3a83cc74e24d0, type: 3}
+  - {fileID: 656568482, guid: e4051399b05b59af28f3a83cc74e24d0, type: 3}
+  - {fileID: 912936368, guid: e4051399b05b59af28f3a83cc74e24d0, type: 3}
+  - {fileID: -1333151946, guid: e4051399b05b59af28f3a83cc74e24d0, type: 3}
+  - {fileID: -1565671506, guid: e4051399b05b59af28f3a83cc74e24d0, type: 3}
