@@ -21,6 +21,7 @@ public static class DatabaseHandler
     public delegate void GetPlayerCallback(Player player);
     public delegate void GetMapsCallback(Dictionary<string, Map> maps);
     public delegate void GetTopRecordsCallback(Dictionary<string, Record> records);
+    public delegate void GetPlayersCallback(Dictionary<string, Player> players);
 
     /// <summary>
     /// Retrieves a record from the Firebase Database, given their id
@@ -84,6 +85,7 @@ public static class DatabaseHandler
     /// <summary>
     /// Gets all maps from the Firebase Database
     /// </summary>
+    /// <param name="mapId"> Id of the map that will be uploaded </param>
     /// <param name="callback"> What to do after all users are downloaded successfully </param>
     public static void GetTopRecords(string mapId, int limit, GetTopRecordsCallback callback)
     {
@@ -155,6 +157,37 @@ public static class DatabaseHandler
         RestClient.Patch<Player>($"{databaseURL}{playersTable}/{mapId}/{stringPlayerId}.json", player).Then(response => { 
             //Debug.Log("The map was successfully uploaded to the database");
             callback(); 
+        });
+    }
+
+    /// <summary>
+    /// Gets all maps from the Firebase Database
+    /// </summary>
+    /// <param name="mapId"> Id of the map that will be uploaded </param>
+    /// <param name="callback"> What to do after all users are downloaded successfully </param>
+    public static void GetPlayers(string mapId, GetPlayersCallback callback)
+    {
+        RestClient.Get($"{databaseURL}{playersTable}/{mapId}.json").Then(response =>
+        {
+            var responseJson = response.Text;
+
+            // Using the FullSerializer library: https://github.com/jacobdufault/fullserializer
+            // to serialize more complex types (a Dictionary, in this case)
+            var data = fsJsonParser.Parse(responseJson);
+            var players = new Dictionary<string, Player>();
+
+            if (!data.IsNull) {
+                object deserialized = null;
+                serializer.TryDeserialize(data, typeof(Dictionary<string, Player>), ref deserialized);
+
+                players = deserialized as Dictionary<string, Player>;
+            }
+
+            callback(players);
+        }).Catch(err => {
+
+            GameManager.ShowWaitLoad(false);
+            Debug.Log(err);
         });
     }
 

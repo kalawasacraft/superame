@@ -15,6 +15,9 @@ public class MapStats : MonoBehaviour
     [SerializeField] private TMPro.TMP_Text _counterMap;
     public GameObject firstSelected;
     public List<GameObject> rowsTopPlayers;
+    public List<GameObject> columnsCharacters;
+
+    private Vector2 _sizeColumn = new Vector2(20f, 45f);
     
     private LocalizedStringTable _stringTable = new LocalizedStringTable { TableReference = "LanguageText" };
     private GameManager _gameManager;
@@ -79,6 +82,30 @@ public class MapStats : MonoBehaviour
 
             GameManager.ShowWaitLoad(false);
         });
+
+        DatabaseHandler.GetPlayers(mapId, players => {
+            
+            List<List<string> > topCharacters = new List<List<string> > ();
+
+            foreach (var player in players) {
+                topCharacters.Add(new List<string>() {player.Value.completed.ToString(), player.Key});
+            }
+
+            topCharacters.Sort(delegate (List<string> x, List<string> y) {
+                int xValue = int.Parse(x[0]);
+                int yValue = int.Parse(y[0]);
+
+                if (xValue == yValue) {    
+                    return (x[1].CompareTo(y[1]) < 0 ? -1 : 1);
+                }
+                return (xValue > yValue ? -1 : 1);
+            });
+
+            for (int i = 0; i < players.Count; i++) {
+                Debug.Log(topCharacters[i][1] + " - " + topCharacters[i][0]);
+                SetColumnCharacter(columnsCharacters[i], int.Parse(topCharacters[i][0]), int.Parse(topCharacters[0][0]), int.Parse(topCharacters[i][1].Split("_")[1]));
+            }
+        });
     }
 
     private void SetRowTopPlayer(GameObject row, string nickname, string score, int playerId)
@@ -95,6 +122,18 @@ public class MapStats : MonoBehaviour
             tempImage.color = new Color(1f, 1f, 1f, 1f);
             tempImage.sprite = _gameManager.players[playerId].face;
         }
+    }
+
+    private void SetColumnCharacter(GameObject column, int amount, int maxAmount, int playerId)
+    {
+        float heightColumn = 0f;
+        if (maxAmount > 0) {
+            heightColumn = (amount * _sizeColumn.y) / maxAmount;
+        }
+
+        column.GetComponentsInChildren<TMP_Text>()[0].SetText(amount.ToString());
+        column.transform.Find("Column Value").GetComponent<RectTransform>().sizeDelta = new Vector2(_sizeColumn.x, heightColumn);
+        column.transform.Find("Player Face").GetComponent<Image>().sprite = _gameManager.players[playerId].face;
     }
 
     public void Quit()

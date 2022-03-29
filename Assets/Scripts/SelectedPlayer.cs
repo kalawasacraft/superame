@@ -30,7 +30,6 @@ public class SelectedPlayer : MonoBehaviour
     {
         PlayerPrefs.SetInt("playerIndex", _playerIndex);
         PlayerPrefs.Save();
-        Debug.Log(_playerIndex.ToString() + "-" + _gameManager.players[_playerIndex].animationIndex.ToString());
         _animatorCharacter.Play("Player"+_gameManager.players[_playerIndex].animationIndex.ToString());
     }
 
