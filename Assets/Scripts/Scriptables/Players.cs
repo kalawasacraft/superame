@@ -6,6 +6,7 @@ using UnityEngine;
 public class Players : ScriptableObject
 {
     public GameObject player;
+    public string namePlayer;
     public Sprite face;
     public int animationIndex;
     public List<Sprite> statusFaces;

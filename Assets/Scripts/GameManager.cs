@@ -33,6 +33,11 @@ public class GameManager : MonoBehaviour
     public static void InitGame()
     {
         int mapIndex = PlayerPrefs.GetInt("mapIndex");
+        if (mapIndex >= Instance.maps.Count) {
+            mapIndex = 0;
+            PlayerPrefs.SetInt("mapIndex", mapIndex);
+            PlayerPrefs.Save();
+        }
         Instance._currentMap = Instance.maps[mapIndex];
         Instance._currentLeafValue = 0;
         Instance._currentHealthValue = Instance._currentMap.health;
@@ -100,7 +105,7 @@ public class GameManager : MonoBehaviour
     private void SaveTimePlayed()
     {
         string playerName = PlayerPrefs.GetString(GetNicknamePrefs());
-        string mapId = Instance.maps[PlayerPrefs.GetInt("mapIndex")].mapId;
+        string mapId = Instance._currentMap.mapId;
         float myTimePlayed = TimerController.GetTimePlayedFloat();
         int playerId = PlayerPrefs.GetInt("playerIndex");
         var newRecord = new Record(playerId, myTimePlayed);
@@ -255,6 +260,11 @@ public class GameManager : MonoBehaviour
             Instance.waitLoad.SetActive(value);
         }
     }
+
+    /*public static int GetMapIndex()
+    {
+        return Instance._mapIndex;
+    }*/
 
     public static int RandomNumber(int min, int max)
     {

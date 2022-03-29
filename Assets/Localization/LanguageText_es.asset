@@ -91,8 +91,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 22121188869623808
-    m_Localized: "\xBFPodr\xE1s recolectar las hojas doradas de coca en el menor
-      tiempo posible?"
+    m_Localized: Recolecta todas las hojas doradas de coca en el menor tiempo posible.
     m_Metadata:
       m_Items: []
   - m_Id: 22121940316934144
@@ -166,6 +165,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 26474945686360064
     m_Localized: "Apareci\xF3 un objeto"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30072879833239552
+    m_Localized: Usa los potenciadores en el momento indicado.
     m_Metadata:
       m_Items: []
   references:

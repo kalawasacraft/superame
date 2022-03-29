@@ -13,12 +13,13 @@ public class TimerController : MonoBehaviour
 
     void Awake()
     {
-        if (TimerController.Instance == null) {
+        TimerController.Instance = this;
+        /*if (TimerController.Instance == null) {
             TimerController.Instance = this;
             DontDestroyOnLoad(this.gameObject);
         } else {
             Destroy(this.gameObject);
-        }
+        }*/
     }
 
     // Start is called before the first frame update

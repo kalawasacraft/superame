@@ -8,6 +8,7 @@ public class SelectedPlayer : MonoBehaviour
 {
     private int _playerIndex;
     [SerializeField] private GameObject _character;
+    [SerializeField] private TMPro.TMP_Text _nameCharacter;
     private GameManager _gameManager;
     private Animator _animatorCharacter;
 
@@ -30,7 +31,9 @@ public class SelectedPlayer : MonoBehaviour
     {
         PlayerPrefs.SetInt("playerIndex", _playerIndex);
         PlayerPrefs.Save();
+
         _animatorCharacter.Play("Player"+_gameManager.players[_playerIndex].animationIndex.ToString());
+        _nameCharacter.SetText(_gameManager.players[_playerIndex].namePlayer);
     }
 
     public void NextPlayer()

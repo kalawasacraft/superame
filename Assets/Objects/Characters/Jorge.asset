@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Jorge
   m_EditorClassIdentifier: 
   player: {fileID: 1817544515903625219, guid: d9bd8ecb7509683d195f418313bab2d3, type: 3}
+  namePlayer: Jorgito tu Terror
   face: {fileID: 352667614993179775, guid: 43ae90cd49426cd45a64cf26eda60a37, type: 3}
   animationIndex: 1
   statusFaces:

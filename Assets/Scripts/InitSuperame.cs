@@ -41,6 +41,7 @@ public class InitSuperame : MonoBehaviour
 
         startMenu.SetActive(true);
         startMenu.GetComponent<SelectedPlayer>().ChangePlayer();
+        startMenu.GetComponent<SelectedMap>().ChangeMap();
 
         FinishInit();
     }

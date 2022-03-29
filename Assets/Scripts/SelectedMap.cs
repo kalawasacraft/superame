@@ -8,6 +8,7 @@ public class SelectedMap : MonoBehaviour
 {
     private int _mapIndex;
     [SerializeField] private Button _mapButton;
+    [SerializeField] private TMPro.TMP_Text _nameMap;
     private GameManager _gameManager;
 
     // Start is called before the first frame update
@@ -23,11 +24,13 @@ public class SelectedMap : MonoBehaviour
         ChangeMap();
     }
 
-    private void ChangeMap()
+    public void ChangeMap()
     {
         PlayerPrefs.SetInt("mapIndex", _mapIndex);
         PlayerPrefs.Save();
+        
         _mapButton.GetComponent<Image>().sprite = _gameManager.maps[_mapIndex].sprite;
+        _nameMap.SetText(_gameManager.maps[_mapIndex].nameMap);
     }
 
     public void NextMap()

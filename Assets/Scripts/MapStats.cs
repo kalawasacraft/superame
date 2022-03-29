@@ -102,7 +102,6 @@ public class MapStats : MonoBehaviour
             });
 
             for (int i = 0; i < players.Count; i++) {
-                Debug.Log(topCharacters[i][1] + " - " + topCharacters[i][0]);
                 SetColumnCharacter(columnsCharacters[i], int.Parse(topCharacters[i][0]), int.Parse(topCharacters[0][0]), int.Parse(topCharacters[i][1].Split("_")[1]));
             }
         });

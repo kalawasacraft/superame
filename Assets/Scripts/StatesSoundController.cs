@@ -16,12 +16,13 @@ public class StatesSoundController : MonoBehaviour
 
     void Awake()
     {
-        if (StatesSoundController.Instance == null) {
+        StatesSoundController.Instance = this;
+        /*if (StatesSoundController.Instance == null) {
             StatesSoundController.Instance = this;
             DontDestroyOnLoad(this.gameObject);
         } else {
             Destroy(this.gameObject);
-        }
+        }*/
 
         _audio = GetComponent<AudioSource>();
     }

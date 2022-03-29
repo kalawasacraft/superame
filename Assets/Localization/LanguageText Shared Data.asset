@@ -163,6 +163,10 @@ MonoBehaviour:
     m_Key: langMessageObjectAppeared
     m_Metadata:
       m_Items: []
+  - m_Id: 30072879833239552
+    m_Key: langHelpMsgPowerUps
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

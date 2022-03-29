@@ -6,6 +6,7 @@ using UnityEngine;
 public class Maps : ScriptableObject
 {
     public string mapId;
+    public string nameMap;
     public Sprite sprite;
     public int positionBuildScene;
     public int goldLeafs;

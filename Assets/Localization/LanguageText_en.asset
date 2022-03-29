@@ -91,8 +91,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 22121188869623808
-    m_Localized: Can you collect the golden coca leaves in the shortest possible
-      time?
+    m_Localized: Collect all the golden coca leaves in the shortest time possible.
     m_Metadata:
       m_Items: []
   - m_Id: 22121940316934144
@@ -165,6 +164,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 26474945686360064
     m_Localized: An object appeared
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30072879833239552
+    m_Localized: Use the power-ups at the right time.
     m_Metadata:
       m_Items: []
   references:

@@ -40,7 +40,9 @@ public class Notifications : MonoBehaviour
         if (PlayerPrefs.HasKey(GameManager.GetNicknamePrefs())) {
             nicknameText.SetText(PlayerPrefs.GetString(GameManager.GetNicknamePrefs()));
         } else {
-            nicknameText.SetText("???");
+            PlayerPrefs.SetString(GameManager.GetNicknamePrefs(), "000");
+            PlayerPrefs.Save();
+            nicknameText.SetText("000");
         }
 
         messageText.SetText("");

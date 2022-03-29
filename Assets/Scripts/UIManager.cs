@@ -14,12 +14,13 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
-        if (UIManager.Instance == null) {
+        UIManager.Instance = this;
+        /*if (UIManager.Instance == null) {
             UIManager.Instance = this;
             DontDestroyOnLoad(this.gameObject);
         } else {
             Destroy(this.gameObject);
-        }
+        }*/
     }
 
     // Start is called before the first frame update
