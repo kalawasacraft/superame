@@ -40,6 +40,7 @@ public class InitSuperame : MonoBehaviour
         }
 
         startMenu.SetActive(true);
+        startMenu.GetComponent<SelectedPlayer>().ChangePlayer();
 
         FinishInit();
     }

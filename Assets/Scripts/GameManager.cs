@@ -102,7 +102,8 @@ public class GameManager : MonoBehaviour
         string playerName = PlayerPrefs.GetString(GetNicknamePrefs());
         string mapId = Instance.maps[PlayerPrefs.GetInt("mapIndex")].mapId;
         float myTimePlayed = TimerController.GetTimePlayedFloat();
-        var newRecord = new Record(PlayerPrefs.GetInt("playerIndex"), myTimePlayed);
+        int playerId = PlayerPrefs.GetInt("playerIndex");
+        var newRecord = new Record(playerId, myTimePlayed);
 
         GameManager.ShowWaitLoad(true);
 
@@ -125,17 +126,27 @@ public class GameManager : MonoBehaviour
 
             DatabaseHandler.GetRecord(mapId, playerName, newRecord, record => {
                 
-                if (record.time > newRecord.time) {
-                    DatabaseHandler.PostRecord(newRecord, mapId, playerName, () => { });
+                newRecord.completed = record.completed + 1;
+                if (record.time <= newRecord.time) {
+                    newRecord.time = record.time;
+                    newRecord.playerId = record.playerId;
                 }
+
+                DatabaseHandler.PostRecord(newRecord, mapId, playerName, () => { });
             });
         
         });
 
+        DatabaseHandler.GetPlayer(mapId, playerId, player => {
+
+            var updatePlayer = new Player(player.completed + 1);
+            DatabaseHandler.PatchPlayer(updatePlayer, mapId, playerId, () => { });
+        });
+
         DatabaseHandler.GetMap(mapId, map => {
 
-            var testMap = new Map(map.completed + 1);
-            DatabaseHandler.PatchMap(testMap, mapId, () => { });
+            var updateMap = new Map(map.completed + 1);
+            DatabaseHandler.PatchMap(updateMap, mapId, () => { });
         });
     }
 

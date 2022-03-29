@@ -26,10 +26,11 @@ public class SelectedPlayer : MonoBehaviour
         ChangePlayer();
     }
 
-    private void ChangePlayer()
+    public void ChangePlayer()
     {
         PlayerPrefs.SetInt("playerIndex", _playerIndex);
         PlayerPrefs.Save();
+        Debug.Log(_playerIndex.ToString() + "-" + _gameManager.players[_playerIndex].animationIndex.ToString());
         _animatorCharacter.Play("Player"+_gameManager.players[_playerIndex].animationIndex.ToString());
     }
 
@@ -46,10 +47,4 @@ public class SelectedPlayer : MonoBehaviour
 
         ChangePlayer();
     }
-
-    /*public void StartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }*/
-
 }

@@ -6,17 +6,19 @@ using Proyecto26;
 
 public static class DatabaseHandler
 {
-    private static bool inProduction = AppGlobal.GetInProduction();
     private static readonly string databaseURL = AppGlobal.GetDatabaseURL();
-    private static readonly string mapsTable = (inProduction ? "maps" : "test_maps");
-    private static readonly string recordsTable = (inProduction ? "records" : "test_records");
+    private static readonly string mapsTable = AppGlobal.GetMapsTable();
+    private static readonly string recordsTable = AppGlobal.GetRecordsTable();
+    private static readonly string playersTable = AppGlobal.GetPlayersTable();
 
     private static fsSerializer serializer = new fsSerializer();
 
     public delegate void PostMapCallback();
     public delegate void PostRecordCallback();
+    public delegate void PostPlayerCallback();
     public delegate void GetMapCallback(Map map);
     public delegate void GetRecordCallback(Record record);
+    public delegate void GetPlayerCallback(Player player);
     public delegate void GetMapsCallback(Dictionary<string, Map> maps);
     public delegate void GetTopRecordsCallback(Dictionary<string, Record> records);
 
@@ -31,7 +33,7 @@ public static class DatabaseHandler
             callback(map);
         }).Catch(err => {
 
-            GameManager.ShowWaitLoad(false);
+            //GameManager.ShowWaitLoad(false);
             Debug.Log(err);
         });
     }
@@ -57,6 +59,24 @@ public static class DatabaseHandler
             callback(maps);
         }).Catch(err => {
 
+            Debug.Log(err);
+        });
+    }
+
+    /// <summary>
+    /// Retrieves a record from the Firebase Database, given their id
+    /// </summary>
+    /// <param name="mapId"> Id of the map that will be uploaded </param>
+    /// <param name="playerId"> Id of the player that will be uploaded </param>
+    /// <param name="callback"> What to do after the user is downloaded successfully </param>
+    public static void GetPlayer(string mapId, int playerId, GetPlayerCallback callback)
+    {
+        string stringPlayerId = "player_" + playerId.ToString();
+        RestClient.Get<Player>($"{databaseURL}{playersTable}/{mapId}/{stringPlayerId}.json").Then(player => { 
+            callback(player);
+        }).Catch(err => {
+
+            GameManager.ShowWaitLoad(false);
             Debug.Log(err);
         });
     }
@@ -117,7 +137,23 @@ public static class DatabaseHandler
     public static void PatchMap(Map map, string mapId, PostMapCallback callback)
     {      
         RestClient.Patch<Map>($"{databaseURL}{mapsTable}/{mapId}.json", map).Then(response => { 
-            Debug.Log("The map was successfully uploaded to the database");
+            //Debug.Log("The map was successfully uploaded to the database");
+            callback(); 
+        });
+    }
+
+    /// <summary>
+    /// Adds a map to the Firebase Database
+    /// </summary>
+    /// <param name="player"> Player object that will be uploaded </param>
+    /// <param name="mapId"> Id of the map that will be uploaded </param>
+    /// <param name="playerId"> Id of the player that will be uploaded </param>
+    /// <param name="callback"> What to do after the user is uploaded successfully </param>
+    public static void PatchPlayer(Player player, string mapId, int playerId, PostPlayerCallback callback)
+    {
+        string stringPlayerId = "player_" + playerId.ToString();
+        RestClient.Patch<Player>($"{databaseURL}{playersTable}/{mapId}/{stringPlayerId}.json", player).Then(response => { 
+            //Debug.Log("The map was successfully uploaded to the database");
             callback(); 
         });
     }
@@ -134,7 +170,7 @@ public static class DatabaseHandler
     public static void PostRecord(Record record, string mapId, string playerName, PostRecordCallback callback)
     {
         RestClient.Put<Record>($"{databaseURL}{recordsTable}/{mapId}/{playerName}.json", record).Then(response => { 
-            Debug.Log("The record was successfully uploaded to the database");
+            //Debug.Log("The record was successfully uploaded to the database");
             callback();
         }).Catch(err => {
 

@@ -21,7 +21,6 @@ public class EffectHealth : MonoBehaviour
             GameManager.RestoreHealth();
             collision.SendMessageUpwards("InitEffectHealth", timeEffect);
 
-            Debug.Log("HEALTH!!!");
             Destroy(gameObject);
         }
     }

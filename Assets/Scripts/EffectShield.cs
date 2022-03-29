@@ -21,7 +21,6 @@ public class EffectShield : MonoBehaviour
             collision.SendMessageUpwards("InitEffectShield", timeEffect);
             GameManager.InitFullShield(timeEffect);
 
-            Debug.Log("SHIELD!!!");
             Destroy(gameObject);
         }
     }

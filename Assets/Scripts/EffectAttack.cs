@@ -21,7 +21,6 @@ public class EffectAttack : MonoBehaviour
             collision.SendMessageUpwards("InitEffectAttack", timeEffect);
             GameManager.InitFullAttack(timeEffect);
 
-            Debug.Log("ATTACK!!!");
             Destroy(gameObject);
         }
     }

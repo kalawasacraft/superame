@@ -18,6 +18,34 @@
         .
         .
     }
+
+    players: {
+        map01: {
+            player_0: {
+                completed: 0
+            },
+            .
+            .
+            .
+        },
+        .
+        .
+        .
+    }
+    
+    test_players: {
+        map01: {
+            player_0: {
+                completed: 0
+            },
+            .
+            .
+            .
+        },
+        .
+        .
+        .
+    }
 */
 
 using System.Collections;
