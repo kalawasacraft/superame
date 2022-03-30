@@ -8,7 +8,7 @@ public class PoliticianPatrol : MonoBehaviour
     [SerializeField] private float _speed;
     public float decreasedSeconds = 3f;
     public HealthBarEnemy healthBarEnemy;
-    [SerializeField] private TMPro.TMP_Text _messageSeconds;
+    public SecondsGained secondsGained;
 
     private bool _facingRight = true;
     private float _hitPoints;
@@ -51,7 +51,7 @@ public class PoliticianPatrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _messageSeconds.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0f,0.27f,0f));
+
     }
 
     void FixedUpdate()
@@ -126,7 +126,7 @@ public class PoliticianPatrol : MonoBehaviour
             if (_hitPoints <= 0) {
                 _isDeath = true;
                 _animator.SetTrigger("Death");
-                _messageSeconds.SetText("-" + decreasedSeconds.ToString("0.00"));
+                secondsGained.Show(transform.position + new Vector3(0f,0.27f,0f), decreasedSeconds);
 
                 TimerController.DecreaseTime(decreasedSeconds);
                 Destroy(gameObject, 1.4f);

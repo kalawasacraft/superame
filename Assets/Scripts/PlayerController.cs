@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 4f;
     public float longIdleTime = 5f;
     public float attackTwoTime = 0.5f;
+    public float speedWhenAttacked = 0.2f;
 
     public Transform groundCheck;
     public LayerMask groundLayer;
@@ -106,8 +107,9 @@ public class PlayerController : MonoBehaviour
             }
             
             if (Input.GetButtonDown("Fire2") && _isGrounded && !_isAttacking) {
-                _movement = Vector2.zero;
-                _rigidbody.velocity = Vector2.zero;
+                //_movement = Vector2.zero;
+                //_rigidbody.velocity = Vector2.zero;
+                _rigidbody.velocity = new Vector2(_movement.normalized.x * speedWhenAttacked, _rigidbody.velocity.y);
 
                 if (_numberCurrentAttack == 0) {
                     _animator.SetTrigger("AttackOne");

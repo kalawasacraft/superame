@@ -11,8 +11,6 @@ public class HelpWindow : MonoBehaviour
     [SerializeField] private TMP_Text _versionText;
     public GameObject firstSelected;
 
-    private bool _isHelp = false;
-
     void Start()
     {
         if (GameManager.IsFirstOpenGame()) {
@@ -24,18 +22,11 @@ public class HelpWindow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (_isHelp) {
-                Quit();
-            } else {
-                Help();
-            }
-        }*/
+
     }
 
     public void Help()
     {
-        _isHelp = true;
         _windowHelp.SetActive(true);
         
         if (PlayerPrefs.HasKey(GameManager.GetNicknamePrefs())) {
@@ -46,7 +37,6 @@ public class HelpWindow : MonoBehaviour
 
     public void Quit()
     {
-        _isHelp = false;
         GameManager.SetIsFirstOpenGame(false);
 
         Invoke("QuitAction", 0.2f);

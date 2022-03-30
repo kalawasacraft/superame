@@ -14,6 +14,10 @@ public class Notifications : MonoBehaviour
     public GameObject waitWriteImage;
     public GameObject trophyImage;
     public GameObject notificationsPanel;
+    public GameObject powerUpPanel;
+    public TMP_Text counterPowerUp;
+    public Image iconPowerUp;
+    public List<Sprite> powerUpImages;
 
     private string _messageTemp;
     private bool _openPanel;
@@ -152,6 +156,21 @@ public class Notifications : MonoBehaviour
     private void SetMessageText(string message)
     {
         messageText.SetText(message);
+    }
+
+    public void SetIconPowerUp(int value)
+    {
+        iconPowerUp.sprite = powerUpImages[value];
+    }
+
+    public void ShowPanelPowerUp(bool value)
+    {
+        powerUpPanel.SetActive(value);
+    }
+
+    public void SetCounterPowerUp(int value)
+    {
+        counterPowerUp.SetText(value.ToString());
     }
 
     private IEnumerator InvokeRealtimeCoroutine(System.Action action, float seconds)

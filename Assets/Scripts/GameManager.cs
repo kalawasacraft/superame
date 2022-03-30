@@ -78,10 +78,34 @@ public class GameManager : MonoBehaviour
         return Instance._currentMap.health;
     }
 
-    public static void RestoreHealth()
+    public static void RestoreHealth(float time)
     {
         Instance._currentHealthValue = Instance._currentMap.health;
         UIManager.UpdateHealthUI(Instance._currentHealthValue);
+
+        UIManager.SetPowerUpIcon(2);
+        Instance.StartCoroutine(Instance.CountdownHealth(time));
+    }
+
+    private IEnumerator CountdownHealth(float time)
+    {
+        UIManager.ShowPowerUpCounter(true);
+        int initValue = 10000;
+
+        while(time > 0) {
+            time -= Time.deltaTime;
+            
+            int tempValue = (int) time;
+            if (initValue != tempValue) {
+                UIManager.SetPowerUpCounter(tempValue + 1);
+                initValue = tempValue;
+            }
+
+            yield return null;
+        }
+
+        UIManager.ShowPowerUpCounter(false);
+        yield return null;
     }
 
     public static void IncreaseLeaf()
@@ -199,6 +223,7 @@ public class GameManager : MonoBehaviour
     public static void InitFullAttack(float time)
     {
         Instance.StartCoroutine(Instance.CountdownAttack(time));
+        UIManager.SetPowerUpIcon(0);
     }
 
     public static bool IsFullAttack()
@@ -212,10 +237,22 @@ public class GameManager : MonoBehaviour
     private IEnumerator CountdownAttack(float time)
     {
         _isFullAttack = true;
+        UIManager.ShowPowerUpCounter(true);
+        int initValue = 10000;
+
         while(time > 0) {
             time -= Time.deltaTime;
+            
+            int tempValue = (int) time;
+            if (initValue != tempValue) {
+                UIManager.SetPowerUpCounter(tempValue + 1);
+                initValue = tempValue;
+            }
+
             yield return null;
         }
+
+        UIManager.ShowPowerUpCounter(false);
         _isFullAttack = false;
         yield return null;
     }
@@ -223,6 +260,7 @@ public class GameManager : MonoBehaviour
     public static void InitFullShield(float time)
     {
         Instance.StartCoroutine(Instance.CountdownShield(time));
+        UIManager.SetPowerUpIcon(1);
     }
 
     public static bool IsFullShield()
@@ -236,10 +274,22 @@ public class GameManager : MonoBehaviour
     private IEnumerator CountdownShield(float time)
     {
         _isFullShield = true;
+        UIManager.ShowPowerUpCounter(true);
+        int initValue = 10000;
+
         while(time > 0) {
             time -= Time.deltaTime;
+
+            int tempValue = (int) time;
+            if (initValue != tempValue) {
+                UIManager.SetPowerUpCounter(tempValue + 1);
+                initValue = tempValue;
+            }
+
             yield return null;
         }
+
+        UIManager.ShowPowerUpCounter(false);
         _isFullShield = false;
         yield return null;
     }
@@ -260,11 +310,6 @@ public class GameManager : MonoBehaviour
             Instance.waitLoad.SetActive(value);
         }
     }
-
-    /*public static int GetMapIndex()
-    {
-        return Instance._mapIndex;
-    }*/
 
     public static int RandomNumber(int min, int max)
     {

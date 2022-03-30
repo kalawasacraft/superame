@@ -5,12 +5,14 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    public TMPro.TMP_Text healthValue;
     public TMPro.TMP_Text leafValue;
     public TMPro.TMP_Text topLeafValue;
     public TMPro.TMP_Text timeValue;
     public TMPro.TMP_Text countdownValue;
+    public RectTransform healthImage;
     public GameObject buttonPause;
+
+    private float _sizeHeartLeaf = 36f;
 
     void Awake()
     {
@@ -36,7 +38,7 @@ public class UIManager : MonoBehaviour
 
     public static void UpdateHealthUI(int health)
     {
-        Instance.healthValue.SetText(Instance.getHealthString(health));
+        Instance.SetHealth(health);
     }
 
     public static void UpdateLeafUI(int leaf)
@@ -114,8 +116,23 @@ public class UIManager : MonoBehaviour
         Instance.GetComponent<Notifications>().ShowNotificationAlert(message);
     }
 
-    private string getHealthString(int health)
+    public static void ShowPowerUpCounter(bool value)
     {
-        return new string('O', health);
+        Instance.GetComponent<Notifications>().ShowPanelPowerUp(value);
+    }
+
+    public static void SetPowerUpCounter(int value)
+    {
+        Instance.GetComponent<Notifications>().SetCounterPowerUp(value);
+    }
+
+    public static void SetPowerUpIcon(int value)
+    {
+        Instance.GetComponent<Notifications>().SetIconPowerUp(value);
+    }
+
+    private void SetHealth(int health)
+    {
+        healthImage.sizeDelta = new Vector2(health * _sizeHeartLeaf, healthImage.sizeDelta.y);
     }
 }
