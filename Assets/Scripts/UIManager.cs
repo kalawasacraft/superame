@@ -76,6 +76,11 @@ public class UIManager : MonoBehaviour
         Instance.GetComponent<MenuCompleted>().Completed();
     }
 
+    public static void ShowTrophiesInCompleted()
+    {
+        Instance.GetComponent<MenuCompleted>().ShowTrophies();
+    }
+
     public static void ShowMenuGameOver()
     {
         Instance.GetComponent<MenuGameOver>().GameOver();

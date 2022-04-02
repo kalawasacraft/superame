@@ -10,6 +10,7 @@ public class MenuCompleted : MonoBehaviour
     [SerializeField] private GameObject _buttonPause;
     [SerializeField] private GameObject _menuCompleted;
     [SerializeField] private TMPro.TMP_Text _timePlayed;
+    [SerializeField] private GameObject _trophiesObject;
     public GameObject firstSelected;
 
     private LocalizedStringTable _stringTable = new LocalizedStringTable { TableReference = "LanguageText" };
@@ -23,6 +24,7 @@ public class MenuCompleted : MonoBehaviour
     private void InitAction()
     {
         _buttonPause.SetActive(false);
+        _trophiesObject.SetActive(false);
         _menuCompleted.SetActive(false);
     }
 
@@ -41,6 +43,11 @@ public class MenuCompleted : MonoBehaviour
         eventSystem.SetSelectedGameObject(firstSelected, new BaseEventData(eventSystem));
 
         SoundsManager.SetVolumeAtmosphere(0.3f);
+    }
+
+    public void ShowTrophies()
+    {
+        _trophiesObject.SetActive(true);
     }
 
     public void Restart()

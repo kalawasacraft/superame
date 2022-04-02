@@ -29,6 +29,11 @@ public class MapStats : MonoBehaviour
 
     public void ShowStats()
     {
+        Invoke("CallShowStats", 0.2f);
+    }
+
+    public void CallShowStats()
+    {
         _mapStatsWindow.SetActive(true);
 
         EventSystem eventSystem = EventSystem.current;

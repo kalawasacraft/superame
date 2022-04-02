@@ -149,6 +149,7 @@ public class GameManager : MonoBehaviour
 
             if (iAmTheBest) {
                 UIManager.ShowNotificationTopPlayer();
+                UIManager.ShowTrophiesInCompleted();
             }
 
             GameManager.ShowWaitLoad(false);

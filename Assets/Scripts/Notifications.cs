@@ -111,6 +111,7 @@ public class Notifications : MonoBehaviour
         playerStatusFace.sprite = _facesStatus[3];
 
         ShowNotification(_stringTable.GetTable().GetEntry("langMessageTopPlayer").GetLocalizedString(), 0.3f);
+        notificationsPanel.GetComponent<Image>().color = new Color(251f/255f, 223f/255f, 107f/255f);
         notificationsPanel.GetComponent<AudioSource>().Play();
         trophyImage.SetActive(true);
     }

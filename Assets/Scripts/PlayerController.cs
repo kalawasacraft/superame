@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
         if (!_isDeath && !GameManager.GetGameIsPaused()) {
             if (!_isAttacking) {
                 // Movement
-                float horizontalInput = Input.GetAxisRaw("Horizontal");
+                float horizontalInput = SimpleInput.GetAxisRaw("Horizontal");
                 _movement = new Vector2(horizontalInput, 0f);
 
                 if ((horizontalInput < 0f && _facingRight) || (horizontalInput > 0f && !_facingRight)) {
@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
             //
 
-            if (Input.GetButtonDown("Jump") && !_isAttacking &&
+            if (SimpleInput.GetButtonDown("Jump") && !_isAttacking &&
                 (_isGrounded || (!_isJumping && _airTime < 0.15f))) {
                 
                 _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
                 _audio.Play();
             }
             
-            if (Input.GetButtonDown("Fire2") && _isGrounded && !_isAttacking) {
+            if (SimpleInput.GetButtonDown("Fire4") && _isGrounded && !_isAttacking) {
                 //_movement = Vector2.zero;
                 //_rigidbody.velocity = Vector2.zero;
                 _rigidbody.velocity = new Vector2(_movement.normalized.x * speedWhenAttacked, _rigidbody.velocity.y);
