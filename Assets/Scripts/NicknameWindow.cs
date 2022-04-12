@@ -25,8 +25,11 @@ public class NicknameWindow : MonoBehaviour
             _inputNickname.onValueChanged.AddListener (delegate { SetNickname(); });
 
             _windowNickname.SetActive(true);
-            EventSystem eventSystem = EventSystem.current;
-            eventSystem.SetSelectedGameObject(firstSelected, new BaseEventData(eventSystem));
+
+            #if !UNITY_ANDROID
+                EventSystem eventSystem = EventSystem.current;
+                eventSystem.SetSelectedGameObject(firstSelected, new BaseEventData(eventSystem));
+            #endif
         }
     }
 
@@ -64,6 +67,7 @@ public class NicknameWindow : MonoBehaviour
 
         EventSystem eventSystem = EventSystem.current;
         eventSystem.SetSelectedGameObject(_quitHelpButton, new BaseEventData(eventSystem));
+
         _windowNickname.SetActive(false);
     }
 }

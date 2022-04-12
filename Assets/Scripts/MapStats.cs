@@ -51,8 +51,14 @@ public class MapStats : MonoBehaviour
 
         _imageMap.sprite = _gameManager.maps[mapIndex].sprite;
 
+        _counterMap.SetText("");
+
         foreach (GameObject row in rowsTopPlayers) {
             SetRowTopPlayer(row, "---", "-", -1);
+        }
+
+        foreach (GameObject column in columnsCharacters) {
+            SetColumnCharacter(column, 0, 0, -1);
         }
 
         DatabaseHandler.GetMap(mapId, map => {
@@ -135,9 +141,19 @@ public class MapStats : MonoBehaviour
             heightColumn = (amount * _sizeColumn.y) / maxAmount;
         }
 
-        column.GetComponentsInChildren<TMP_Text>()[0].SetText(amount.ToString());
         column.transform.Find("Column Value").GetComponent<RectTransform>().sizeDelta = new Vector2(_sizeColumn.x, heightColumn);
-        column.transform.Find("Player Face").GetComponent<Image>().sprite = _gameManager.players[playerId].face;
+        column.GetComponentsInChildren<TMP_Text>()[0].SetText(playerId < 0 ? "" : "~ " + amount.ToString());
+        Image tempImage = column.transform.Find("Player Face").GetComponent<Image>();
+        
+        if (playerId < 0) {
+            tempImage.color = new Color(1f, 1f, 1f, 0f);
+            tempImage.sprite = null;
+
+        } else {
+            tempImage.color = new Color(1f, 1f, 1f, 1f);
+            tempImage.sprite = _gameManager.players[playerId].face;
+        }
+        
     }
 
     public void Quit()

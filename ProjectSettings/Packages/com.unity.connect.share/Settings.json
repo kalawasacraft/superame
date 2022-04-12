@@ -6,7 +6,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"/home/julio/Documentos/unity/superame_copia_webgl/Builds/WebGL;;;;;;;;;\"}"
+                "value": "{\"m_Value\":\"/home/julio/Documentos/unity/01_klws_superame/Builds/WebGL;/home/julio/Documentos/unity/superame_copia_webgl/Builds/WebGL;;;;;;;;\"}"
             }
         ]
     }

@@ -11,11 +11,20 @@ public static class DatabaseHandler
     private static readonly string recordsTable = AppGlobal.GetRecordsTable();
     private static readonly string playersTable = AppGlobal.GetPlayersTable();
 
+    private static readonly string apiKey = AppGlobal.GetApiKey();
+    private static readonly string authUser = AppGlobal.GetUser();
+    private static readonly string authPassword = AppGlobal.GetPassword();
+
     private static fsSerializer serializer = new fsSerializer();
 
+    public delegate void SignInCallback();
+    public static string idToken;
+
+    public delegate void PostUserCallback();
     public delegate void PostMapCallback();
     public delegate void PostRecordCallback();
     public delegate void PostPlayerCallback();
+    public delegate void GetUserCallback(User user);
     public delegate void GetMapCallback(Map map);
     public delegate void GetRecordCallback(Record record);
     public delegate void GetPlayerCallback(Player player);
@@ -23,11 +32,6 @@ public static class DatabaseHandler
     public delegate void GetTopRecordsCallback(Dictionary<string, Record> records);
     public delegate void GetPlayersCallback(Dictionary<string, Player> players);
 
-    /// <summary>
-    /// Retrieves a record from the Firebase Database, given their id
-    /// </summary>
-    /// <param name="mapId"> Id of the map that will be uploaded </param>
-    /// <param name="callback"> What to do after the user is downloaded successfully </param>
     public static void GetMap(string mapId, GetMapCallback callback)
     {
         RestClient.Get<Map>($"{databaseURL}{mapsTable}/{mapId}.json").Then(map => { 
@@ -39,10 +43,6 @@ public static class DatabaseHandler
         });
     }
 
-    /// <summary>
-    /// Gets all maps from the Firebase Database
-    /// </summary>
-    /// <param name="callback"> What to do after all users are downloaded successfully </param>
     public static void GetMaps(GetMapsCallback callback)
     {
         RestClient.Get($"{databaseURL}{mapsTable}.json").Then(response =>
@@ -64,12 +64,6 @@ public static class DatabaseHandler
         });
     }
 
-    /// <summary>
-    /// Retrieves a record from the Firebase Database, given their id
-    /// </summary>
-    /// <param name="mapId"> Id of the map that will be uploaded </param>
-    /// <param name="playerId"> Id of the player that will be uploaded </param>
-    /// <param name="callback"> What to do after the user is downloaded successfully </param>
     public static void GetPlayer(string mapId, int playerId, GetPlayerCallback callback)
     {
         string stringPlayerId = "player_" + playerId.ToString();
@@ -82,89 +76,6 @@ public static class DatabaseHandler
         });
     }
 
-    /// <summary>
-    /// Gets all maps from the Firebase Database
-    /// </summary>
-    /// <param name="mapId"> Id of the map that will be uploaded </param>
-    /// <param name="callback"> What to do after all users are downloaded successfully </param>
-    public static void GetTopRecords(string mapId, int limit, GetTopRecordsCallback callback)
-    {
-        RestClient.Get($"{databaseURL}{recordsTable}/{mapId}.json?orderBy=\"time\"&limitToFirst={limit}").Then(response =>
-        {
-            var responseJson = response.Text;
-
-            // Using the FullSerializer library: https://github.com/jacobdufault/fullserializer
-            // to serialize more complex types (a Dictionary, in this case)
-            var data = fsJsonParser.Parse(responseJson);
-            var records = new Dictionary<string, Record>();
-
-            if (!data.IsNull) {
-                object deserialized = null;
-                serializer.TryDeserialize(data, typeof(Dictionary<string, Record>), ref deserialized);
-
-                records = deserialized as Dictionary<string, Record>;
-            }
-
-            callback(records);
-        }).Catch(err => {
-
-            GameManager.ShowWaitLoad(false);
-            Debug.Log(err);
-        });
-    }
-
-    /// <summary>
-    /// Adds a map to the Firebase Database
-    /// </summary>
-    /// <param name="map"> Map object that will be uploaded </param>
-    /// <param name="mapId"> Id of the map that will be uploaded </param>
-    /// <param name="callback"> What to do after the user is uploaded successfully </param>
-    
-    /// Create map only manually...!
-    
-    /*public static void PostMap(Map map, string mapId, PostMapCallback callback)
-    {
-        RestClient.Put<Map>($"{databaseURL}{mapsTable}/{mapId}.json", map).Then(response => { 
-            Debug.Log("The map was successfully uploaded to the database");
-            callback(); 
-        });
-    }*/
-
-    /// <summary>
-    /// Adds a map to the Firebase Database
-    /// </summary>
-    /// <param name="map"> Map object that will be uploaded </param>
-    /// <param name="mapId"> Id of the map that will be uploaded </param>
-    /// <param name="callback"> What to do after the user is uploaded successfully </param>
-    public static void PatchMap(Map map, string mapId, PostMapCallback callback)
-    {      
-        RestClient.Patch<Map>($"{databaseURL}{mapsTable}/{mapId}.json", map).Then(response => { 
-            //Debug.Log("The map was successfully uploaded to the database");
-            callback(); 
-        });
-    }
-
-    /// <summary>
-    /// Adds a map to the Firebase Database
-    /// </summary>
-    /// <param name="player"> Player object that will be uploaded </param>
-    /// <param name="mapId"> Id of the map that will be uploaded </param>
-    /// <param name="playerId"> Id of the player that will be uploaded </param>
-    /// <param name="callback"> What to do after the user is uploaded successfully </param>
-    public static void PatchPlayer(Player player, string mapId, int playerId, PostPlayerCallback callback)
-    {
-        string stringPlayerId = "player_" + playerId.ToString();
-        RestClient.Patch<Player>($"{databaseURL}{playersTable}/{mapId}/{stringPlayerId}.json", player).Then(response => { 
-            //Debug.Log("The map was successfully uploaded to the database");
-            callback(); 
-        });
-    }
-
-    /// <summary>
-    /// Gets all maps from the Firebase Database
-    /// </summary>
-    /// <param name="mapId"> Id of the map that will be uploaded </param>
-    /// <param name="callback"> What to do after all users are downloaded successfully </param>
     public static void GetPlayers(string mapId, GetPlayersCallback callback)
     {
         RestClient.Get($"{databaseURL}{playersTable}/{mapId}.json").Then(response =>
@@ -191,33 +102,6 @@ public static class DatabaseHandler
         });
     }
 
-    //public static void GetRecordByMapId
-
-    /// <summary>
-    /// Adds a record to the Firebase Database
-    /// </summary>
-    /// <param name="record"> Record object that will be uploaded </param>
-    /// <param name="mapId"> Id of the map that will be uploaded </param>
-    /// <param name="playerName"> Id of the player that will be uploaded </param>
-    /// <param name="callback"> What to do after the user is uploaded successfully </param>
-    public static void PostRecord(Record record, string mapId, string playerName, PostRecordCallback callback)
-    {
-        RestClient.Put<Record>($"{databaseURL}{recordsTable}/{mapId}/{playerName}.json", record).Then(response => { 
-            //Debug.Log("The record was successfully uploaded to the database");
-            callback();
-        }).Catch(err => {
-
-            //GameManager.ShowWaitLoad(false);
-            Debug.Log(err);
-        });
-    }
-
-    /// <summary>
-    /// Retrieves a record from the Firebase Database, given their id
-    /// </summary>
-    /// <param name="mapId"> Id of the map that will be uploaded </param>
-    /// <param name="playerName"> Id of the user that we are looking for </param>
-    /// <param name="callback"> What to do after the user is downloaded successfully </param>
     public static void GetRecord(string mapId, string playerName, Record record, GetRecordCallback callback)
     {
         RestClient.Get<Record>($"{databaseURL}{recordsTable}/{mapId}/{playerName}.json").Then(record => { 
@@ -225,6 +109,62 @@ public static class DatabaseHandler
         }).Catch(err => {
 
             PostRecord(record, mapId, playerName, () => {});
+        });
+    }
+
+    public static void GetTopRecords(string mapId, int limit, GetTopRecordsCallback callback)
+    {
+        RestClient.Get($"{databaseURL}{recordsTable}/{mapId}.json?orderBy=\"time\"&limitToFirst={limit}").Then(response =>
+        {
+            var responseJson = response.Text;
+
+            // Using the FullSerializer library: https://github.com/jacobdufault/fullserializer
+            // to serialize more complex types (a Dictionary, in this case)
+            var data = fsJsonParser.Parse(responseJson);
+            var records = new Dictionary<string, Record>();
+
+            if (!data.IsNull) {
+                object deserialized = null;
+                serializer.TryDeserialize(data, typeof(Dictionary<string, Record>), ref deserialized);
+
+                records = deserialized as Dictionary<string, Record>;
+            }
+
+            callback(records);
+        }).Catch(err => {
+
+            GameManager.ShowWaitLoad(false);
+            Debug.Log(err);
+        });
+    }
+
+    public static void PatchMap(Map map, string mapId, PostMapCallback callback)
+    {      
+        RestClient.Patch<Map>($"{databaseURL}{mapsTable}/{mapId}.json", map).Then(response => { 
+            callback(); 
+        }).Catch(err => {
+            Debug.Log(err);
+        });
+    }  
+
+    public static void PatchPlayer(Player player, string mapId, int playerId, PostPlayerCallback callback)
+    {
+        string stringPlayerId = "player_" + playerId.ToString();
+        RestClient.Patch<Player>($"{databaseURL}{playersTable}/{mapId}/{stringPlayerId}.json", player).Then(response => { 
+            callback(); 
+        }).Catch(err => {
+            Debug.Log(err);
+        });
+    }    
+
+    public static void PostRecord(Record record, string mapId, string playerName, PostRecordCallback callback)
+    {
+        RestClient.Put<Record>($"{databaseURL}{recordsTable}/{mapId}/{playerName}.json", record).Then(response => { 
+            callback();
+        }).Catch(err => {
+
+            //GameManager.ShowWaitLoad(false);
+            Debug.Log(err);
         });
     }
 
@@ -280,4 +220,67 @@ public static class DatabaseHandler
     }
     
     */
+
+    // Examples use function PatchPlayerAuth and PatchMapAuth
+
+    public static void SignIn(SignInCallback callback)
+    {
+        var payLoad = $"{{\"email\":\"{authUser}\",\"password\":\"{authPassword}\",\"returnSecureToken\":true}}";
+        RestClient.Post($"https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key={apiKey}",
+            payLoad).Then(
+            response =>
+            {
+                var responseJson = response.Text;
+
+                // Using the FullSerializer library: https://github.com/jacobdufault/fullserializer
+                // to serialize more complex types (a Dictionary, in this case)
+                var data = fsJsonParser.Parse(responseJson);
+                object deserialized = null;
+                serializer.TryDeserialize(data, typeof(Dictionary<string, string>), ref deserialized);
+
+                var authResponse = deserialized as Dictionary<string, string>;
+                idToken = authResponse["idToken"];
+
+                callback();
+            }).Catch(err => {
+                Debug.Log(err);
+            });
+    }
+
+    public static void PatchMapAuth(Map map, string mapId, PostMapCallback callback)
+    {
+        SignIn(() => {
+                RestClient.Patch<Map>($"{databaseURL}{mapsTable}/{mapId}.json?auth={idToken}", map).Then(response => { 
+                    callback(); 
+                }).Catch(err => {
+                    Debug.Log(err);
+                });
+            }
+        );
+    }
+
+    public static void PatchPlayerAuth(Player player, string mapId, int playerId, PostPlayerCallback callback)
+    {
+        SignIn(() => {
+                string stringPlayerId = "player_" + playerId.ToString();
+                RestClient.Patch<Player>($"{databaseURL}{playersTable}/{mapId}/{stringPlayerId}.json?auth={idToken}", player).Then(response => { 
+                    callback(); 
+                }).Catch(err => {
+                    Debug.Log(err);
+                });
+            }
+        );
+    }
+
+    // Examples use AuthHandler.cs and Main.cs
+
+    public static void PostUser(User user, string userId, PostUserCallback callback, string idToken)
+    {
+        RestClient.Put<User>($"{databaseURL}users/{userId}.json?auth={idToken}", user).Then(response => { callback(); });
+    }
+
+    public static void GetUser(string userId, GetUserCallback callback, string idToken)
+    {
+        RestClient.Get<User>($"{databaseURL}users/{userId}.json?auth={idToken}").Then(user => { callback(user); });
+    }
 }

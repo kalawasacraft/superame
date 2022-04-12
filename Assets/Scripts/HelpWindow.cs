@@ -10,9 +10,20 @@ public class HelpWindow : MonoBehaviour
     [SerializeField] private GameObject _windowHelp;
     [SerializeField] private TMP_Text _versionText;
     public GameObject firstSelected;
+    public GameObject dashboardPrimary;
+    public GameObject dashboardMobile;
 
     void Start()
     {
+        #if UNITY_ANDROID
+            dashboardMobile.SetActive(true);
+            dashboardPrimary.SetActive(false);
+        #endif
+        #if !UNITY_ANDROID
+            dashboardPrimary.SetActive(true);
+            dashboardMobile.SetActive(false);
+        #endif
+
         if (GameManager.IsFirstOpenGame()) {
             Help();
         }

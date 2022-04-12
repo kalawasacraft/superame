@@ -55,16 +55,52 @@ using UnityEngine;
 public class AppGlobalExample
 {
     private static bool inProduction = false; // false: testing,  true: production
-    private const string projectId = "projectId-default";
+    
+    private const string projectId = "projectId"; // change to your projectId
     private static readonly string databaseURL = $"https://{projectId}.firebaseio.com/";
+    private const string apiKey = "fsDF?EW?FER?e?F?QWD?F??F?EW??ewfew"; // change to yout api key Project
+
+    // user for Authentication (example)
+    private const string userEmail = "user@example.com";
+    private const string userPassword = "12345678";
+
+    // tables in Database
+    private static readonly string mapsTable = (inProduction ? "maps" : "test_maps");
+    private static readonly string recordsTable = (inProduction ? "records" : "test_records");
+    private static readonly string playersTable = (inProduction ? "players" : "test_players");
 
     public static string GetDatabaseURL()
     {
         return databaseURL;
     }
 
-    public static bool GetInProduction()
+    public static string GetApiKey()
     {
-        return inProduction;
+        return apiKey;
+    }
+
+    public static string GetUser()
+    {
+        return userEmail;
+    }
+
+    public static string GetPassword()
+    {
+        return userPassword;
+    }
+
+    public static string GetMapsTable()
+    {
+        return mapsTable;
+    }
+
+    public static string GetRecordsTable()
+    {
+        return recordsTable;
+    }
+
+    public static string GetPlayersTable()
+    {
+        return playersTable;
     }
 }
