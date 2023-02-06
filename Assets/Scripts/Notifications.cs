@@ -26,7 +26,7 @@ public class Notifications : MonoBehaviour
     private GameManager _gameManager;
     private LocalizedStringTable _stringTable = new LocalizedStringTable { TableReference = "LanguageText" };
 
-    void Start()
+    void Awake()
     {
         _gameManager = GameManager.Instance;
     }

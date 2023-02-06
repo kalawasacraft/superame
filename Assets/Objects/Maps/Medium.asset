@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Medium
   m_EditorClassIdentifier: 
   mapId: map02
-  nameMap: Mapa 02
+  nameMap: Alcanzado la Sima
   sprite: {fileID: -8922806545422484088, guid: 293f4de6c0c688cce952e4b6a7a75a47, type: 3}
   positionBuildScene: 2
-  goldLeafs: 11
+  goldLeafs: 1
   health: 3

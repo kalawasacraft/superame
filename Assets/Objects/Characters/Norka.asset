@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3794ad34d2edca78fac8bfb5ef351c98, type: 3}
+  m_Name: Norka
+  m_EditorClassIdentifier: 
+  player: {fileID: 612804782004410023, guid: 31b475a41b18c9230ae7f175336dbffd, type: 3}
+  namePlayer: Norka
+  face: {fileID: -536826726, guid: e6f850fc002ceb3b89a8be41f874db08, type: 3}
+  animationIndex: 3
+  statusFaces:
+  - {fileID: 1092890399, guid: bc8fcc2632ee961dd82b36ca486cf56a, type: 3}
+  - {fileID: -206636079, guid: bc8fcc2632ee961dd82b36ca486cf56a, type: 3}
+  - {fileID: 628605909, guid: bc8fcc2632ee961dd82b36ca486cf56a, type: 3}
+  - {fileID: -1747184115, guid: bc8fcc2632ee961dd82b36ca486cf56a, type: 3}
+  - {fileID: -352412138, guid: bc8fcc2632ee961dd82b36ca486cf56a, type: 3}
